@@ -1,0 +1,372 @@
+/*ndique au navigateur de prendre en compte la bordure et le remplissage dans la valeur définie pour la largeur et la hauteur. */
+* {
+    box-sizing: border-box;
+}
+/*HEADER*/
+/*STYLE DU MENU EN HAUT DE LA PAGE*/
+
+/*CLASSE TOPBAR VIA BOOTSTRAP*/
+.topbar {
+    position: fixed;
+    top: 0px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: #FFF;
+    display:flex;
+    padding-top: 50px;
+    z-index: 3;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .05);
+    font-family:'Journal';
+    font-size :1.5em;
+    font-family: 'Cinzel', sans-serif;
+}
+
+.topbar nav {
+    float: left;
+}
+
+.topbar nav a {
+    color: #8C6A45;
+    text-decoration: none;
+    margin: 0 53px;
+
+}
+
+.topbar nav a:hover, .topbar nav a.active {
+    color: #000;
+}
+/*Message de bienvenue */
+#container-bienvenue {
+    display:flex;
+    flex-direction: column;
+    width:50%;
+    margin:auto;
+    position:relative;
+    font-family: "verdana", serif;
+    }
+
+h1 {
+    font-family:'Journal';
+    margin:0;
+    color: #8C6A45;
+    
+}
+
+h2  {
+    width: 100%;
+    margin : 200px;
+    font-family: 'Cinzel', sans-serif;
+    }
+
+/* #test {
+    width: 100%;
+    height : 800px;
+    background : red;
+} */
+
+/*ONGLETS s'inscrire et se connecter */
+.connexion-social {
+    float: right;
+    display:flex;
+    flex-direction: column;
+}
+
+.connexion-social a {
+    padding: 0 12px;
+    opacity: .5;
+    color: #8C6A45;
+}
+
+.connexion-social a:hover {
+    opacity: 1;
+    color: #000;
+}
+/*FIN ONGLETS s'inscrire et se connecter */
+
+/*FIN HEADER*/
+body {
+    font-family: "verdana", serif;
+    font-size: 1.5rem;
+    line-height: 1.6;
+    margin: 0;
+   
+}
+/*BANNIERE*/
+/* #banniere {
+    width: 100%;
+    height : 100px;
+    background : red;
+} */
+/*FIN BANNIERE*/
+
+/*CONTAINER PRESENTATION IMAGE ET TEXTE + sidebar*/
+#container-content {
+    display: flex;
+    
+}
+
+/*  Container grisé situé entre la banière et le footer*/
+#main {
+    background: whitesmoke;
+    width: 100%;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, .05);
+    position: relative;
+    z-index: 2;
+    margin-top:560px;
+  
+}
+
+/*container qui STOCKE la classe .card*/
+#container-card {
+    height:1100px;
+    width:50%;
+    margin:auto;
+    position:relative;
+}
+
+.card {
+    position: absolute;
+    text-align: justify;
+    width:100%;
+    margin-top:-250px;
+    margin-left:100px;
+
+ }
+ 
+ /*ADAPTER LARGEUR IMAGE DE JF*/
+ #JF {
+    width :100%;
+    
+}
+/*fin container qui STOCKE la classe .card*/
+
+
+
+/*MISE EN PLACE DE LA BARRE DU COTE DROIT*/
+#sidebar {
+    position: relative;
+    width: 375px;
+    padding: 40px;
+    font-size: 22px;
+    z-index: 1;
+    background: #FBFBFB;
+
+}
+
+/*CATEGORIE EDTION (titres)*/
+.sidebar-title {
+    font-size: 30px;
+    color: #8C6A45;
+    margin: 15px 0;
+}
+
+/*LIEN revue des deux mondes*/
+#sidebar a {
+    color: #9F9F9F;
+    text-decoration: none;
+}
+
+#sidebar ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#sidebar li {
+    padding: 6px 0;
+}
+
+#sidebar a:hover {
+    text-decoration: underline;
+}
+
+#sidebar hr {
+    border:none;
+    height: 1px;
+    background: #C4C4C4;
+    margin: 50px 0;
+}
+
+/*style du contenu pour chapitres*/
+.container-articles {
+    width:70%;
+    margin:auto;
+    display:flex;
+}
+
+/*POSITION DU CONTAINER*/
+.chapitre {
+    position: relative;
+    margin: 50px 0;
+    padding-left: 333px;
+    min-height: 103px;
+    text-align: justify;
+}
+/*Publié le*/
+#chapitre-date {
+    font-size: 1rem;
+    font-style: italic;
+}
+/*NUMERO DU CHAPITRE*/
+#chapitre-numero {
+    font-size: 2.5rem;
+}
+/*TITRE DU CHAPITRE*/
+#chapitre-title {
+    font-size: 2.25rem;
+    line-height: 1.1;
+    margin: 10px 0px 10px 0;
+    justify-content: center;
+    text-align: justify;
+  
+}
+/*EMPLACEMENT*/
+#emplacement-dernier-chapitre {
+    margin:auto;
+    width:50%;
+    font-size: 50px;
+    color: #8C6A45;
+
+}
+
+/*TEXT DU CHAPITRE*/
+#chapitre-text {
+    font-size: 1.25rem;
+    line-height: normal;
+    
+}
+
+/*TRAIT DE SEPARATION ENTRE CHAPITRE*/
+hr.style-hr {
+	border-top: 1px solid #8c8b8b;
+	border-bottom: 1px solid #fff;
+}
+hr.style-hr:after {
+	content: '';
+	display: block;
+	margin-top: 2px;
+	border-top: 1px solid #8c8b8b;
+	border-bottom: 1px solid #fff;
+}
+
+/*BOUTON PREV ET NEXT VIA BOOTSRAP*/
+.pagination a {
+    color:#C4C4C4;
+}
+
+/*eNCART DU DERNIER CHAPITRE*/
+#last-chapter {
+    font-size: 30px;
+    color: #8C6A45;
+    margin:auto;
+    width:10%;
+    
+}
+/*COMMENTAIRES DE L ARTICLE*/
+.comment {
+    color: black;
+    font-size: 1.25rem;
+}
+/*FOOTER*/
+#footer {
+    clear:both;
+    height:100px;
+    margin:0;
+    padding: 35px;
+    background-color: #8C6A45;
+    font-size:1.5em;
+    color:#C4C4C4;
+    font-family: 'Cinzel', sans-serif;
+}
+
+
+/*Les boutons de modérations*/
+.btn-link {
+    width:500px;
+}
+
+
+
+/*BUTTON ENVOYER */
+button {
+    width:100px;
+    height:50px;
+    
+}
+
+
+
+  /* POLICES*/
+  @font-face {
+    
+      font-family: 'Journal';
+      src:url('/font/Journal.otf') format('truetype');
+      font-family: 'Cinzel';
+      src:url('/font/Cinzel.otf') format('truetype');
+  }
+
+  @media screen and (min-width: 320px)  and (max-width: 800px) {
+
+
+
+/*Message de bienvenue */
+#container-bienvenue {
+    display:none;
+    }
+
+    /*CLASSE TOPBAR VIA BOOTSTRAP*/
+.topbar {
+    padding-top: 0px;
+}
+
+.topbar nav a {
+
+    margin: 0 10px;
+    flex-direction: column;
+
+}
+
+/*CONTAINER PRESENTATION IMAGE ET TEXTE + sidebar*/
+#container-content {
+    display: flex;
+    margin-top:-500px;
+  
+}
+/*container qui STOCKE la classe .card*/
+#container-card {
+  
+    width:100%;
+   
+}
+
+.card {
+    width:100%;
+    margin-left:0px;
+
+ }
+
+ #sidebar {
+    display:none;
+
+}
+
+/*style du contenu pour chapitres*/
+.container-articles {
+    width:100%;
+    margin:0px 10px 0px 10px;
+}
+
+/*POSITION DU CONTAINER*/
+.chapitre {
+    position: relative;
+    margin: -300px 0px 0px 0px;;
+    padding:0px;
+    min-height: 103px;
+    text-align: justify;
+
+}
+
+
+
+  }/*FIN MEDIA QUERIES*/
