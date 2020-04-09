@@ -1,31 +1,33 @@
-<?php $title = 'Les chapitres'; ?>
+<?php $title = 'Mon blog'; ?>
 
 <?php ob_start(); ?>
+<h1>Mon super blog !</h1>
+<p>Derniers billets du blog :</p>
 
-<h2>On doit voir tous les chapitres </h2>
 
-<!-- CODE VERIFIER AVEC PASCAL -->
-<!-- ouvrir php
-// $reponse = $db->query('SELECT * FROM chapters');
-//      while ($data=$reponse->fetch())
-//      {
-//         echo $data ['title'];
-//         echo '<img src="'.$data ['illustration'].'"';
+<?php
+while ($data = $posts->fetch())
+{
+   
+?>
+    <div class="news">
+        <h3>
+            <?= htmlspecialchars($data['title']) ?>
+            <em>le <?= $data['creation_date_fr'] ?></em>
+        </h3>
         
-//      }
+        <p>
+            <?= nl2br(substr($data['content'], 0, 1000).'...') ?>
+             <!-- nl2br(htmlspecialchars($data['content']))  -->
 
-fermer php-->
-
-
-
-<div id ='test'></div>
-
-
-
-
-
-
-
+            <br />
+            <em><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Lire la suite</a></em>
+        </p>
+    </div>
+<?php
+}
+$posts->closeCursor();
+?>
 <?php $content = ob_get_clean(); ?>
 
-<?php require 'template.php'; ?>
+<?php require('template.php'); ?>

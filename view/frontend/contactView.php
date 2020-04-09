@@ -2,7 +2,7 @@
 
 
 <?php ob_start(); ?>
-
+<img src="http://developpeur-aura.com/Jean_Forteroche/public/images/header.jpg" class="card-img-top" alt="bannière" id="banniere">
   <!-- FORMULAIRE DE CONTACT -->
   <div class="bg-contact2">
             <div class="container-contact2">

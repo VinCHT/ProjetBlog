@@ -1,21 +1,56 @@
 <?php
-require('homeView.php');
-require('model/frontend.php');
+require('connectManager.php');
 
-
-require('model.php');
-
-function listPosts()
+function getPosts()
 {
-    $posts = getPosts();
+    $db = dbConnect();
+    $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM chapters ORDER BY creation_date DESC LIMIT 0, 5');
 
-    require('listPostsView.php');
+    return $req;
 }
 
-function post()
+function getLastPost()
 {
-    $post = getPost($_GET['id']);
-    $comments = getComments($_GET['id']);
+    $db = dbConnect();
+    $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM chapters ORDER BY creation_date DESC LIMIT 1');
 
-    require('postView.php');
+    return $req;
 }
+
+function getPost($postId)
+{
+    $db = dbConnect();
+    $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM chapters WHERE id = ?');
+    $req->execute(array($postId));
+    $post = $req->fetch();
+
+    return $post;
+}
+
+function getComments($postId)
+{
+    $db = dbConnect();
+    $comments = $db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments WHERE chapter_id = ? ORDER BY comment_date DESC');
+    $comments->execute(array($postId));
+
+    return $comments;
+}
+
+function postComment($postId, $author, $comment)
+{
+    $db = dbConnect();
+    $comments = $db->prepare('INSERT INTO comments(chapter_id, author, comment, comment_date) VALUES(?, ?, ?, NOW())');
+    $affectedLines = $comments->execute(array($postId, $author, $comment));
+    return $affectedLines;
+}
+
+
+
+// Signalement d'un commentaire
+function postSignal($idComment) {
+    $db = dbConnect();
+    $comments = $db->prepare('INSERT INTO comments(comment_signal) VALUES(1)');
+    $affectedLines = $comments->execute(array($idComment));
+    return $affectedLines;
+  }
+

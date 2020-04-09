@@ -1,29 +1,26 @@
 <?php
 
-// 1 il faut se connecter à la BDD
-require('model/connectManager.php');
-// 2 On veut l'affichage de l'accueil
-require('view/frontend/homeView.php');
-
-
-require('model/frontend.php');
-//Les if viennent du cours d'OC : https://openclassrooms.com/fr/courses/4670706-adoptez-une-architecture-mvc-en-php/4682351-creer-un-routeur
-
-require('controller/frontend.php');
-    
 require('controller/frontend.php');
 
-try { // On essaie de faire des choses
+try {
     if (isset($_GET['action'])) {
-        if ($_GET['action'] == 'listPosts') {
-            listPosts();
+        if ($_GET['action'] == 'homeView') {
+            homeView();
+        }
+        elseif ($_GET['action'] == 'listPostsView') {
+            listPostsView();
+        } 
+        elseif ($_GET['action'] == 'contactView') {
+            contactView();
+        }
+        elseif ($_GET['action']=='loginView') {
+            login();
         }
         elseif ($_GET['action'] == 'post') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 post();
             }
             else {
-                // Erreur ! On arrête tout, on envoie une exception, donc au saute directement au catch
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
         }
@@ -33,20 +30,23 @@ try { // On essaie de faire des choses
                     addComment($_GET['id'], $_POST['author'], $_POST['comment']);
                 }
                 else {
-                    // Autre exception
                     throw new Exception('Tous les champs ne sont pas remplis !');
                 }
             }
             else {
-                // Autre exception
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
         }
+        elseif ($_GET['action'] == 'post') {
+            $comment= intval($_GET['id']);
+            // intval — Retourne la valeur numérique entière équivalente d'une variable
+            addSignal($comment);
+          }
     }
     else {
-        listPosts();
+        homeView();
     }
 }
-catch(Exception $e) { // S'il y a eu une erreur, alors...
+catch(Exception $e) {
     echo 'Erreur : ' . $e->getMessage();
 }

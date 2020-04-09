@@ -6,7 +6,7 @@
         <meta name="description" content="Billet simple pour l'Alaska : Le nouvel ouvrage de Jean Forteroche">
         <meta name="author" content="Jean Forteroche">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="icon" type="image/png" href="http://developpeur-aura.com/Jean_Forteroche/view/frontend/images/logo.png">
+        <link rel="icon" type="image/png" href="http://developpeur-aura.com/Jean_Forteroche/public/images/logo.png">
         <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
         <link rel="stylesheet" href="http://developpeur-aura.com/Jean_Forteroche/public/css/contact.css">
     
