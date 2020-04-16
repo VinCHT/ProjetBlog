@@ -19,7 +19,6 @@ textarea:focus, input:focus {
   border-color: transparent !important;
 }
 
-
 button {
 	outline: none !important;
 	border: none;
@@ -29,7 +28,6 @@ button {
 button:hover {
 	cursor: pointer;
 }
-
 
 /*Postion form*/
 .bg-contact2 {
@@ -49,7 +47,7 @@ button:hover {
   align-items: center;
   padding: 15px;
   background: #FBFBFB;
-  
+
 }
 
 /*couleur fond formulaire*/
@@ -60,7 +58,6 @@ button:hover {
   overflow: hidden;
   padding: 72px 55px 90px 55px;
 }
-
 
 .contact2-form {
   width: 100%;
@@ -75,7 +72,6 @@ button:hover {
   text-align: center;
   padding-bottom: 90px;
 }
-
 
 .wrap-input2 {
   width: 100%;
@@ -111,12 +107,10 @@ button:hover {
   left: 0;
   width: 0;
   height: 2px;
-
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
   -moz-transition: all 0.4s;
   transition: all 0.4s;
-
   background: #8C6A45;
 
 }
@@ -131,7 +125,6 @@ button:hover {
   font-size:20px;
   color: #999999;
   line-height: 1.2;
-
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
   -moz-transition: all 0.4s;
@@ -149,12 +142,9 @@ textarea.input2 {
   padding-bottom: 13px;
 }
 
-
 .input2:focus + .focus-input2::before {
   width: 100%;
 }
-
-
 
 .has-val.input2 + .focus-input2::before {
   width: 100%;
@@ -188,13 +178,10 @@ textarea.input2 {
   height: 100%;
   background: #8C6A45;
   top: 0;
- 
-
 }
 
 /*COULEUR DU TEXTE ENVOYER*/
 .contact2-form-btn {
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -204,14 +191,11 @@ textarea.input2 {
   font-size: 16px;
   color: #fff;
   line-height: 1.2;
-  
-
 }
 
 .wrap-contact2-form-btn:hover .contact2-form-bgbtn {
   left: 0;
 }
-
 /*------------------------------------------------------------------
 [ Responsive ]*/
 
@@ -220,8 +204,6 @@ textarea.input2 {
     padding: 72px 15px 90px 15px;
   }
 }
-
-
 
 .validate-input {
   position: relative;

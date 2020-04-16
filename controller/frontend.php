@@ -1,56 +1,76 @@
 <?php
-require('connectManager.php');
-
-function getPosts()
+require_once('model/frontend/CommentManager.php');
+require_once('model/frontend/ChapterManager.php');
+require_once('model/frontend/ContactManager.php');
+//a mettre dans controller backend
+function dashboard()
 {
-    $db = dbConnect();
-    $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM chapters ORDER BY creation_date DESC LIMIT 0, 5');
-
-    return $req;
-}
-
-function getLastPost()
-{
-    $db = dbConnect();
-    $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM chapters ORDER BY creation_date DESC LIMIT 1');
-
-    return $req;
-}
-
-function getPost($postId)
-{
-    $db = dbConnect();
-    $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM chapters WHERE id = ?');
-    $req->execute(array($postId));
-    $post = $req->fetch();
-
-    return $post;
-}
-
-function getComments($postId)
-{
-    $db = dbConnect();
-    $comments = $db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments WHERE chapter_id = ? ORDER BY comment_date DESC');
-    $comments->execute(array($postId));
-
-    return $comments;
-}
-
-function postComment($postId, $author, $comment)
-{
-    $db = dbConnect();
-    $comments = $db->prepare('INSERT INTO comments(chapter_id, author, comment, comment_date) VALUES(?, ?, ?, NOW())');
-    $affectedLines = $comments->execute(array($postId, $author, $comment));
-    return $affectedLines;
+    // require('view/backend/administration.php');
+    require('view/frontend/administration.php');
 }
 
 
+function homeView() 
+{
+    $chapterManager = new ChapterManager();
+    $lastPost =$chapterManager->getLastPost();
+    require('view/frontend/homeView.php');
+}
 
-// Signalement d'un commentaire
-function postSignal($idComment) {
-    $db = dbConnect();
-    $comments = $db->prepare('INSERT INTO comments(comment_signal) VALUES(1)');
-    $affectedLines = $comments->execute(array($idComment));
-    return $affectedLines;
-  }
+function listPostsView()
+{
+    $chapterManager = new ChapterManager();
+    $posts = $chapterManager->getPosts();
+
+    require('view/frontend/listPostsView.php');
+}
+
+function contactView()
+{
+    require('view/frontend/contactView.php');
+}
+
+function post()
+{
+    $chapterManager= new ChapterManager();
+    $commentManager = new CommentManager();
+
+    $post = $chapterManager->getPost($_GET['id']);
+    $comments = $commentManager->getComments($_GET['id']);
+
+    require('view/frontend/postView.php');
+}
+
+function addComment($postId, $author, $comment)
+{
+    $commentManager = new CommentManager();
+    $postComment = $commentManager->postComment($postId, $author, $comment);
+
+    if ($postComment === false) {
+        throw new Exception('Impossible d\'ajouter le commentaire !');
+    }
+    else {
+        header('Location: index.php?action=post&id=' . $postId);
+    }
+}
+
+function addSignal($postId, $author, $comment)
+{
+    $affectedLines = postSignal($postId, $author, $comment);
+
+    if ($affectedLines === false) {
+        throw new Exception('Impossible de signaler le commentaire !');
+    }
+    else {
+        header('Location: index.php?action=post&id=' . $postId);
+    }
+}
+
+function addPseudo($pseudo)
+{
+    $affectedLines = postPseudo($pseudo);
+    header('Location: index.php?');
+}
+
+
 

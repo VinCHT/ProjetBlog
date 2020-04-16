@@ -54,16 +54,32 @@ h1 {
 }
 
 h2  {
-    width: 100%;
-    margin : 200px;
-    font-family: 'Cinzel', sans-serif;
-    }
+    color:red;
+}
 
-/* #test {
-    width: 100%;
-    height : 800px;
-    background : red;
-} */
+p a{
+    color:#8C6A45;
+}
+
+a {
+    color: #8c8b8b;
+}
+
+hr.style1 {
+	border-top: 1px solid #8c8b8b;
+	text-align: center;
+}
+hr.style1:after {
+	content: 'Blog - Jean Forteroche';
+	display: inline-block;
+	position: relative;
+	top: -14px;
+	padding: 0 10px;
+	background: #f0f0f0;
+	color: #8c8b8b;
+	font-size: 18px;
+	
+}
 
 /*ONGLETS s'inscrire et se connecter */
 .connexion-social {
@@ -90,20 +106,21 @@ body {
     font-size: 1.5rem;
     line-height: 1.6;
     margin: 0;
+    background:red;
    
 }
 /*BANNIERE*/
-/* #banniere {
-    width: 100%;
-    height : 100px;
-    background : red;
-} */
+#banniere {
+    height: 900px;
+    position:relative;
+}
 /*FIN BANNIERE*/
 
 /*CONTAINER PRESENTATION IMAGE ET TEXTE + sidebar*/
 #container-content {
     display: flex;
-    
+    margin-top:-320px;
+  
 }
 
 /*  Container grisé situé entre la banière et le footer*/
@@ -113,7 +130,6 @@ body {
     box-shadow: 0 4px 30px rgba(0, 0, 0, .05);
     position: relative;
     z-index: 2;
-    margin-top:560px;
   
 }
 
@@ -142,66 +158,23 @@ body {
 /*fin container qui STOCKE la classe .card*/
 
 
-
-/*MISE EN PLACE DE LA BARRE DU COTE DROIT*/
-#sidebar {
-    position: relative;
-    width: 375px;
-    padding: 40px;
-    font-size: 22px;
-    z-index: 1;
-    background: #FBFBFB;
-
-}
-
-/*CATEGORIE EDTION (titres)*/
-.sidebar-title {
-    font-size: 30px;
-    color: #8C6A45;
-    margin: 15px 0;
-}
-
-/*LIEN revue des deux mondes*/
-#sidebar a {
-    color: #9F9F9F;
-    text-decoration: none;
-}
-
-#sidebar ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-#sidebar li {
-    padding: 6px 0;
-}
-
-#sidebar a:hover {
-    text-decoration: underline;
-}
-
-#sidebar hr {
-    border:none;
-    height: 1px;
-    background: #C4C4C4;
-    margin: 50px 0;
-}
-
 /*style du contenu pour chapitres*/
 .container-articles {
-    width:70%;
+    width:100%;
     margin:auto;
     display:flex;
+    margin:130px;
 }
 
 /*POSITION DU CONTAINER*/
 .chapitre {
     position: relative;
-    margin: 50px 0;
-    padding-left: 333px;
+    margin: auto;
+    width:50%;
     min-height: 103px;
     text-align: justify;
+    display:flex;
+    flex-direction:column;
 }
 /*Publié le*/
 #chapitre-date {
@@ -222,11 +195,13 @@ body {
   
 }
 /*EMPLACEMENT*/
-#emplacement-dernier-chapitre {
+.titre-page {
     margin:auto;
-    width:50%;
+    margin: 20px;
+    width:70%;
     font-size: 50px;
-    color: #8C6A45;
+    /* color: #8C6A45; */
+    color: rgb(1, 190, 95);
 
 }
 
@@ -297,6 +272,129 @@ button {
 
 
 
+/* basic stylings ------------------------------------------ */
+
+.formmulaire	{ 
+  font-family:'Roboto';
+  width:600px; 
+  margin:30px auto 0; 
+  display:block; 
+  background:#FFF;
+  padding:10px 50px 50px;
+}
+
+
+/* form starting stylings ------------------------------- */
+.group 			  { 
+  position:relative; 
+  margin-bottom:45px; 
+}
+input 				{
+  font-size:18px;
+  padding:10px 10px 10px 5px;
+  display:block;
+  width:300px;
+  border:none;
+  border-bottom:1px solid #757575;
+}
+input:focus 		{ outline:none; }
+
+/* LABEL ======================================= */
+label 				 {
+  color:#999; 
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label 		{
+  top:-20px;
+  font-size:14px;
+  color:#5264AE;
+}
+
+/* BOTTOM BARS ================================= */
+.bar 	{ position:relative; display:block; width:300px; }
+.bar:before, .bar:after 	{
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:#5264AE; 
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%; 
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%; 
+  width:100px; 
+  top:25%; 
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   /* POLICES*/
   @font-face {
     
@@ -306,6 +404,7 @@ button {
       src:url('/font/Cinzel.otf') format('truetype');
   }
 
+
   @media screen and (min-width: 320px)  and (max-width: 800px) {
 
 
@@ -314,23 +413,33 @@ button {
 #container-bienvenue {
     display:none;
     }
-
-    /*CLASSE TOPBAR VIA BOOTSTRAP*/
+/*CLASSE TOPBAR VIA BOOTSTRAP*/
 .topbar {
     padding-top: 0px;
 }
-
 .topbar nav a {
-
     margin: 0 10px;
     flex-direction: column;
-
 }
 
+#banniere {
+    width:100%;
+    height:50%;
+}
+
+img {
+    width:100%;
+    height:50%;
+}
+
+.card-img-top {
+    width:100%;
+    height:100%;
+}
 /*CONTAINER PRESENTATION IMAGE ET TEXTE + sidebar*/
 #container-content {
     display: flex;
-    margin-top:-500px;
+    margin-top:300px;
   
 }
 /*container qui STOCKE la classe .card*/
@@ -346,27 +455,27 @@ button {
 
  }
 
- #sidebar {
-    display:none;
-
-}
-
-/*style du contenu pour chapitres*/
-.container-articles {
-    width:100%;
-    margin:0px 10px 0px 10px;
-}
-
 /*POSITION DU CONTAINER*/
 .chapitre {
-    position: relative;
-    margin: -300px 0px 0px 0px;;
-    padding:0px;
-    min-height: 103px;
-    text-align: justify;
+    width:100%;
+ 
+}
 
+.container-articles {
+    width:90%;
+    margin:10px;
+    display:flex;
+    
 }
 
 
 
-  }/*FIN MEDIA QUERIES*/
+
+
+
+
+
+
+
+
+}/*FIN MEDIA QUERIES*/

@@ -9,7 +9,9 @@
             <p>Billet simple pour l'Alaska : découvrez le nouveau roman en ligne !</p>
         </div>
         <div class="connexion-social">
-        <a href="index.php?action=loginView">Administration</a> 
+        <a href="index.php?action=dashboard">Administration</a> 
+  
+        <!-- <a href="http://www.developpeur-aura.com/Jean_Forteroche/view/backend/administration.php">Administration</a>  -->
         </div>
     </header>
 

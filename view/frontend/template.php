@@ -9,8 +9,7 @@
         <link rel="icon" type="image/png" href="http://developpeur-aura.com/Jean_Forteroche/public/images/logo.png">
         <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
         <link rel="stylesheet" href="http://developpeur-aura.com/Jean_Forteroche/public/css/contact.css">
-    
-        <link href="http://developpeur-aura.com/Jean_Forteroche/public/css/style.css" rel="stylesheet"/>
+        <link href="http://developpeur-aura.com/Jean_Forteroche/public/css/style.css" rel="stylesheet" ?<? echo time();?>  />
            <!-- CSS Bootstrap -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <!-- Titre de l'onglet est au sein d'une variable -->

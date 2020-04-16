@@ -1,6 +1,7 @@
 <?php
 
 require('controller/frontend.php');
+// require('controller/backend.php');
 
 try {
     if (isset($_GET['action'])) {
@@ -13,8 +14,8 @@ try {
         elseif ($_GET['action'] == 'contactView') {
             contactView();
         }
-        elseif ($_GET['action']=='loginView') {
-            login();
+        elseif ($_GET['action']=='dashboard') {
+            dashboard();
         }
         elseif ($_GET['action'] == 'post') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
@@ -37,11 +38,18 @@ try {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
         }
-        elseif ($_GET['action'] == 'post') {
+        elseif ($_GET['action'] == 'post') 
+        {
             $comment= intval($_GET['id']);
             // intval — Retourne la valeur numérique entière équivalente d'une variable
             addSignal($comment);
           }
+        // FORMULAIRE CONTACT
+        elseif ($_GET['action'] == 'contact')
+        {
+            addPseudo($cont_name);
+        }
+        
     }
     else {
         homeView();
