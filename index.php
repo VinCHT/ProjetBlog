@@ -17,6 +17,15 @@ try {
         elseif ($_GET['action']=='dashboard') {
             dashboard();
         }
+        elseif ($_GET['action']=='adminChapters') {
+            adminChapters();
+        }
+        elseif ($_GET['action']=='adminComments') {
+            adminComments();
+        }
+        elseif ($_GET['action']=='reportComments') {
+            reportComments();
+        }
         elseif ($_GET['action'] == 'post') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 post();
@@ -45,9 +54,9 @@ try {
             addSignal($comment);
           }
         // FORMULAIRE CONTACT
-        elseif ($_GET['action'] == 'contact')
+        elseif ($_GET['action'] == 'addContact') 
         {
-            addPseudo($cont_name);
+            addContact($_POST['cont_name']);
         }
         
     }

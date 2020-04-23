@@ -6,8 +6,27 @@ require_once('model/frontend/ContactManager.php');
 function dashboard()
 {
     // require('view/backend/administration.php');
-    require('view/frontend/administration.php');
+    require('view/backend/administration.php');
 }
+
+function adminChapters()
+{
+    // require('view/backend/administration.php');
+    require('view/frontend/blistPostsView.php');
+}
+
+function adminComments()
+{
+    // require('view/backend/administration.php');
+    require('view/frontend/blistComments.php');
+}
+
+function reportComments()
+{
+    // require('view/backend/administration.php');
+    require('view/frontend/reportComments.php');
+}
+
 
 
 function homeView() 
@@ -53,6 +72,11 @@ function addComment($postId, $author, $comment)
         header('Location: index.php?action=post&id=' . $postId);
     }
 }
+function addContact($contactName) 
+{
+    $contactManager = new ContactManager();
+    $postContact = $contactManager->postContact($contactName);
+}
 
 function addSignal($postId, $author, $comment)
 {
@@ -66,11 +90,6 @@ function addSignal($postId, $author, $comment)
     }
 }
 
-function addPseudo($pseudo)
-{
-    $affectedLines = postPseudo($pseudo);
-    header('Location: index.php?');
-}
 
 
 

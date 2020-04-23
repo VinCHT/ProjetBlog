@@ -1,7 +1,7 @@
 <?php $title = 'Tous les chapitres'; ?>
 
 <?php ob_start(); ?>
-<img src="http://developpeur-aura.com/Jean_Forteroche/public/images/header.jpg" class="card-img-top" alt="bannière" id="banniere">
+<img src="http://developpeur-aura.com/Jean_Forteroche/public/images/header.jpg" class="card-img-top" class="img-fluid" alt="Responsive image">
 <h2 class="titre-page">Billet simple pour l'Alaska</h2>
 
 <div class="container-articles"> 
@@ -79,4 +79,4 @@ while ($comment = $comments->fetch())
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require('template.php'); ?>
+<?php require('view/template.php'); ?>

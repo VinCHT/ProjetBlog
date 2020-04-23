@@ -1,24 +1,14 @@
 <?php
 require_once('ConnectManager.php');
 
-// class ContactManager extends Manager
-// {
-//     public function getContact($pseudo)
-//     {
-//         $db = $this->dbConnect();
-//         $req = $db->prepare('SELECT id, cont_name, cont_subject, cont_message FROM contacts WHERE cont_name = ?');
-//         $req->execute(array($pseudo));
-//         $contact = $req->fetch();
+class ContactManager extends Manager
+{
+       public function postContact($contactName)
+    {
+        $db = $this->dbConnect();
+        $contacts = $db->prepare('INSERT INTO contacts(cont_name, cont_date) VALUES (1,NOW())');
+        $affectedLines = $contacts->execute(array($contactName));
+        return $affectedLines;
+    }
 
-//         return $contact;
-//     }
-
-//     public function messageContact($cont_name, $subject, $message)
-//     {
-//         $db = $this->dbConnect();
-//         $req = $db->prepare('INSERT INTO users(cont_name, cont_subject, cont_subject) VALUES(?, ?, ?');
-//         $messageContact = $req->execute(array($cont_name, $subject, $message));
-
-//         return $messageContact;
-//     }
-// }
+}

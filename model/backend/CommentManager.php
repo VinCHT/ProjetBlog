@@ -39,6 +39,25 @@ class CommentManager extends Manager
         return $affectedLines;
     }
     
+    // Récupérer les pseudos
+    public function getMessages($pseudo)
+    {
+        $db = $this->dbConnect();
+        $messages = $db->prepare('SELECT id, cont_name FROM contacts');
+        $affectedLines =$messages->execute(array($pseudo));
+    
+        return $affectedLines;
+    }
+
+    //insérer un pseudo
+    public function postPseudo($pseudo)
+    {
+        $db = $this->dbConnect();
+        $messages = $db->prepare('INSERT INTO contacts(cont_name) VALUES(?)');
+        $affectedLines = $messages->execute(array($pseudo));
+        return $affectedLines;
+    }
+    
 }
 
 
