@@ -35,14 +35,17 @@
             <h2 class="titre-page">Le dernier chapitre</h2>
             <div class="container-articles"> 
                 <article class="chapitre" id="article1">
-                <div id="chapitre-img"><img src="http://developpeur-aura.com/Jean_Forteroche/public/images/article4.jpeg" alt="..."></div>                                  
+                <div class="chapitre-img"><img src="http://developpeur-aura.com/Jean_Forteroche/public/images/article4.jpeg" alt="..."></div>   
+                <br>                                
                     <div id="chapitre-numero">Chapitre : <?= htmlspecialchars($data['id']) ?></div>
                     <br>
-                    <h3 id="chapitre-title"><?= htmlspecialchars($data['title']) ?></h3>    
-                    <div id="chapitre-date"><?= $data['creation_date_fr'] ?></div>             
+                    <h3 id="chapitre-title"><?= htmlspecialchars($data['title']) ?></h3>   
+                    <br> 
+                    <div id="chapitre-date">Le<?= $data['creation_date_fr'] ?></div>
+                    <br>             
                     <div id="chapitre-text"><?= nl2br(substr($data['content'], 0, 1000).'...') ?></div>
                     <br>
-                    <em><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Lire la suite</a></em>
+                    <em><a class="lien-navigation" href="index.php?action=post&amp;id=<?= $data['id'] ?>">Lire la suite</a></em>
                 </article>
          </div> <!--fin div container-arrticles -->
    

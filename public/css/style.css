@@ -5,37 +5,23 @@
 /*HEADER*/
 /*STYLE DU MENU EN HAUT DE LA PAGE*/
 
-/*CLASSE TOPBAR VIA BOOTSTRAP*/
-.topbar {
-    position: fixed;
-    top: 0px;
-    left: 0;
-    right: 0;
-    width: 100%;
-    background: #FFF;
-    display:flex;
-    padding-top: 50px;
-    z-index: 3;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, .05);
-    font-family:'Journal';
-    font-size :1.5em;
-    font-family: 'Cinzel', sans-serif;
+
+
+.navbar-text
+{
+    margin-right:200px;
+    font-size: 2em;
+}
+.nav-link
+{
+    font-size: 1.5em;
+}
+nav
+{
+    padding : 500px;
 }
 
-.topbar nav {
-    float: left;
-}
 
-.topbar nav a {
-    color: #8C6A45;
-    text-decoration: none;
-    margin: 0 53px;
-
-}
-
-.topbar nav a:hover, .topbar nav a.active {
-    color: #000;
-}
 /*Message de bienvenue */
 #container-bienvenue {
     display:flex;
@@ -43,11 +29,11 @@
     width:50%;
     margin:auto;
     position:relative;
-    font-family: "verdana", serif;
+    font-family: 'Open Sans Condensed', sans-serif;
     }
 
 h1 {
-    font-family:'Journal';
+    font-family: 'Open Sans Condensed', sans-serif;
     margin:0;
     color: #8C6A45;
     
@@ -65,6 +51,11 @@ a {
     color: #8c8b8b;
 }
 
+.lien-navigation
+{
+    color:#28a745;
+}
+
 hr.style1 {
 	border-top: 1px solid #8c8b8b;
 	text-align: center;
@@ -79,6 +70,11 @@ hr.style1:after {
 	color: #8c8b8b;
 	font-size: 18px;
 	
+}
+.chapitre-img
+{
+    width:50%;
+    height:50%;
 }
 
 /*ONGLETS s'inscrire et se connecter */
@@ -111,14 +107,13 @@ body {
 /*BANNIERE*/
 img {
     width: 100%; 
-    height: auto;
+    height: 100%;
 } 
 
 /*CONTAINER PRESENTATION IMAGE ET TEXTE + sidebar*/
 #container-content {
     display: flex;
-    margin-top:-320px;
-  
+      
 }
 
 /*  Container grisé situé entre la banière et le footer*/
@@ -143,7 +138,6 @@ img {
     position: absolute;
     text-align: justify;
     width:100%;
-    margin-top:-250px;
     margin-left:100px;
 
  }
@@ -194,12 +188,12 @@ img {
 }
 /*EMPLACEMENT*/
 .titre-page {
-    margin:auto;
-    margin: 20px;
+    margin: 50px 20px 100px 20px;
     width:70%;
-    font-size: 50px;
+    font-size: 40px;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.01em;
+    font-family : 'Open Sans Condensed', sans-serif;
 
 }
 
@@ -242,15 +236,15 @@ hr.style-hr:after {
     font-size: 1.25rem;
 }
 /*FOOTER*/
-#footer {
+footer {
     clear:both;
     height:100px;
     margin:0;
-    padding: 35px;
-    background-color: #8C6A45;
+    padding:10px;
+    background-color:#343a40;
     font-size:1.5em;
     color:#C4C4C4;
-    font-family: 'Cinzel', sans-serif;
+    font-family: 'Open Sans Condensed', sans-serif;
 }
 
 
@@ -281,12 +275,6 @@ button {
   padding:10px 50px 50px;
 }
 
-
-/* form starting stylings ------------------------------- */
-.group 			  { 
-  position:relative; 
-  margin-bottom:45px; 
-}
 input 				{
   font-size:18px;
   padding:10px 10px 10px 5px;
@@ -361,6 +349,203 @@ input:focus ~ .highlight {
   animation:inputHighlighter 0.3s ease;
 }
 
+
+input {
+	outline: none;
+	border: none;
+}
+
+textarea {
+  outline: none;
+  border: none;
+}
+
+textarea:focus, input:focus {
+  border-color: transparent !important;
+}
+
+button {
+	outline: none !important;
+	border: none;
+	background: transparent;
+}
+
+button:hover {
+	cursor: pointer;
+}
+
+/*Postion form*/
+.bg-contact2 {
+  width: 100%;  
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+/*Couleur du container*/
+.container-contact2 {
+  width: 100%;  
+  min-height: 50vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background: #FBFBFB;
+
+}
+
+/*couleur fond formulaire*/
+.wrap-contact2 {
+  width: 790px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 72px 55px 90px 55px;
+}
+
+.contact2-form {
+  width: 100%;
+}
+
+/*NOUS CONTACTER TEXTE*/
+.contact2-form-title {
+  display: block;
+  font-size: 39px;
+  color: #333333;
+  line-height: 1.2;
+  text-align: center;
+  padding-bottom: 90px;
+}
+
+.wrap-input2 {
+  width: 100%;
+  position: relative;
+  border-bottom: 2px solid #adadad;
+  margin-bottom: 37px;
+}
+
+/*Largeur des input dans form  et couleur du trait*/
+.input2 {
+  display: block;
+  width: 100%;
+  font-size: 20px;
+  color: #8C6A45;
+  line-height: 1.2;
+}
+
+.focus-input2 {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+   /* Pour quand on click la ligne */
+.focus-input2::before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+  background: #8C6A45;
+
+}
+
+.focus-input2::after {
+  content: attr(data-placeholder);
+  display: block;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  font-size:20px;
+  color: #999999;
+  line-height: 1.2;
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+/*---------------------------------------------*/
+input.input2 {
+  height: 100px;
+}
+
+textarea.input2 {
+  min-height: 115px;
+  padding-top: 13px;
+  padding-bottom: 13px;
+}
+
+.input2:focus + .focus-input2::before {
+  width: 100%;
+}
+
+.has-val.input2 + .focus-input2::before {
+  width: 100%;
+}
+
+/*------------------------------------------------------------------
+[ Button ]*/
+.container-contact2-form-btn {
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 13px;
+}
+
+.wrap-contact2-form-btn {
+  display: block;
+  position: relative;
+  z-index: 1;
+  border-radius: 2px;
+  width: auto;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+/*Coulour du bouton envoyer*/
+.contact2-form-bgbtn {
+  position: absolute;
+  z-index: -1;
+  width: 300%;
+  height: 100%;
+  background: #8C6A45;
+  top: 0;
+}
+
+/*COULEUR DU TEXTE ENVOYER*/
+.contact2-form-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  min-width: 244px;
+  height: 50px;
+  font-size: 16px;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.wrap-contact2-form-btn:hover .contact2-form-bgbtn {
+  left: 0;
+}
+
+
+
+
+
 /* ANIMATIONS ================ */
 @-webkit-keyframes inputHighlighter {
 	from { background:#5264AE; }
@@ -383,10 +568,19 @@ input:focus ~ .highlight {
       font-family: 'Cinzel';
       src:url('/font/Cinzel.otf') format('truetype');
   }
+
+  /*CONTAINER QUI ENGLOBE LE CONTENU SOUS MENU*/
+  .container-undermenu
+  {
+    display:flex;
+  }
  /*Partie admin -> page principale -> les menus*/
 .group {
-    width:50%;
-    margin:auto;
+    width:80%;
+    margin: 50px 550px;
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
 } 
 
 
@@ -417,10 +611,36 @@ input:focus ~ .highlight {
     transform: translate3d(-50%, -50%, 0);
  }
 
+.gestion {
+    color:#F9F1E9;
+    text-align: center;
+}
+.table {
+    text-align: center;
+    color:#F9F1E9;
+}
+th{
+    text-align: center;
+}
+tr{
+    text-align: center;
+}
+tbody {
+    text-align: center;
+}
+thead {
+    text-align: center;
+}
+
  @media only screen and (max-width: 768px) {
     .demo .main-title {
        font-size: 3em;
     }
+    .navbar-text
+{
+    margin-right:0px;
+    font-size: 2em;
+}
  }
 
   @media screen and (min-width: 320px)  and (max-width: 800px) {
@@ -431,21 +651,11 @@ input:focus ~ .highlight {
 #container-bienvenue {
     display:none;
     }
-/*CLASSE TOPBAR VIA BOOTSTRAP*/
-.topbar {
-    padding-top: 0px;
-}
-.topbar nav a {
-    margin: 0 10px;
-    flex-direction: column;
-}
-
 
 /*CONTAINER PRESENTATION IMAGE ET TEXTE + sidebar*/
 #container-content {
     display: flex;
-    margin-top:300px;
-  
+    
 }
 /*container qui STOCKE la classe .card*/
 #container-card {

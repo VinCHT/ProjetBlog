@@ -39,6 +39,13 @@ class CommentManager extends Manager
         return $affectedLines;
     }
     
+    public function getAllComments()
+    {
+        $db = $this->dbConnect();
+        $comments = $db->prepare('SELECT * FROM comments');
+     
+        return $comments ;
+    }
 }
 
 
