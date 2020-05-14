@@ -1,24 +1,15 @@
 <?php
-require_once('ConnectManager.php');
+require_once('model/frontend/ConnectManager.php');
 
-// class ContactManager extends Manager
-// {
-//     public function getContact($pseudo)
-//     {
-//         $db = $this->dbConnect();
-//         $req = $db->prepare('SELECT id, cont_name, cont_subject, cont_message FROM contacts WHERE cont_name = ?');
-//         $req->execute(array($pseudo));
-//         $contact = $req->fetch();
+class ContactManagerBack extends Manager
+{
+    
+    public function getContactsBack()
+    {
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT id, author, content, content_subject, content_date,  DATE_FORMAT(content_date, \'%d/%m/%Y à %Hh%i\') AS content_date FROM messages WHERE supprim=0 ORDER BY content_date DESC');
+      
+        return $req;
+    }
 
-//         return $contact;
-//     }
-
-//     public function messageContact($cont_name, $subject, $message)
-//     {
-//         $db = $this->dbConnect();
-//         $req = $db->prepare('INSERT INTO users(cont_name, cont_subject, cont_subject) VALUES(?, ?, ?');
-//         $messageContact = $req->execute(array($cont_name, $subject, $message));
-
-//         return $messageContact;
-//     }
-// }
+}

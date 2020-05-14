@@ -39,6 +39,16 @@
   <!--FIN FORMULAIRE DE CONTACT -->
 
 
+
+
+
+
+
+
+
+
+
+
 <?php $content = ob_get_clean(); ?>
 
 

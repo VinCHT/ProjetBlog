@@ -1,23 +1,20 @@
 <?php
 
 require('controller/frontend.php');
-// require('controller/backend.php');
+require('controller/backend.php');
 
 try {
     if (isset($_GET['action'])) {
         if ($_GET['action'] == 'homeView') {
             homeView();
         }
-        if ($_GET['action'] == 'voir') {
-            voir();
-        }
         elseif ($_GET['action'] == 'listPostsView') {
             listPostsView();
         } 
-        elseif ($_GET['action'] == 'listPostsView2') {
-            listPostsView2();
+        elseif ($_GET['action'] == 'listPostsViewBack') {
+            listPostsViewBack();
         } 
-    
+      
         elseif ($_GET['action'] == 'contactView') {
             contactView();
         }
@@ -34,22 +31,7 @@ try {
         elseif ($_GET['action']=='login') {
             login();
         }
-        elseif ($_GET['action']=='backChapters') {
-            backChapters();
-        }
       
-        elseif ($_GET['action']=='backContacts') {
-            backContacts();
-        }
-        elseif ($_GET['action']=='adminChapters') {
-            adminChapters();
-        }
-        elseif ($_GET['action']=='adminComments') {
-            adminComments();
-        }
-        elseif ($_GET['action']=='reportComments') {
-            reportComments();
-        }
         elseif ($_GET['action'] == 'post') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 post();
@@ -66,51 +48,66 @@ try {
                 throw new Exception('Aucun identifiant de chapitre envoyé');
             }
         }
-        elseif ($_GET['action'] == 'backComments') {
-                backComments();
-            
-        }
-        elseif ($_GET['action'] == 'commentconfirm') {
-            commentConfirm();
-        
-    }
-     
-        elseif ($_GET['action'] == 'addComment') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                if (!empty($_POST['author']) && !empty($_POST['comment'])) {
+
+      
+        elseif ($_GET['action'] == 'addComment') 
+        {
+            if (isset($_GET['id']) && $_GET['id'] > 0) 
+            {
+                if (!empty($_POST['author']) && !empty($_POST['comment'])) 
+                {
                     addComment($_GET['id'], $_POST['author'], $_POST['comment']);
                 }
-                else {
+                else 
+                {
                     throw new Exception('Tous les champs ne sont pas remplis !');
                 }
             }
-            else {
+            else 
+            {
                 throw new Exception('Aucun identifiant de chapitre envoyé');
             }
         }
+        elseif ($_GET['action'] == 'addSignal')
+        {
+            addSignal($_GET['id'], $_POST['author'], $_POST['comment']);
+           
+        }
+
+
+
         elseif ($_GET['action'] == 'addMessage') 
         {
-            addMessage($_POST['author'],$_POST['content_subject'], $_POST['content']);
+            if (!empty($_POST['author']) && !empty($_POST['content_subject']) && !empty($_POST['content'])) 
+            {
+                addMessage($_POST['author'],$_POST['content_subject'], $_POST['content']);
+            }
+            else 
+            {
+                throw new Exception('Tous les champs ne sont pas remplis !');
+            }
+            
         }
+      
+    
         elseif ($_GET['action'] == 'getMessages') 
         {
             AllMessages();
         }
-        elseif ($_GET['action'] == 'supprim') 
+        elseif ($_GET['action'] == 'getComments') 
         {
-          
-            oneDelete();
-            
+            AllComments();
         }
-        elseif ($_GET['action'] == 'post') 
+
+        // ADMIN - Supprimer un commentaire
+        elseif ($_GET['action'] == 'deleteComment')
         {
-            $comment= intval($_GET['id']);
-            // intval — Retourne la valeur numérique entière équivalente d'une variable
-            addSignal($comment);
-          }
-    
-     
-        
+            deleteComment();
+        }
+
+
+
+
     }
     else {
         homeView();

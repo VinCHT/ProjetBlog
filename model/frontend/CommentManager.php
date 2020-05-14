@@ -12,14 +12,6 @@ class CommentManager extends Manager
         return $comments;
     }
 
-    public function getLastComment()
-    {
-        $db = $this->dbConnect();
-
-        $comment = $db->query('SELECT author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr FROM comments ORDER BY comment_date DESC LIMIT 1');
-        return $comment;
-    }
-    
     public function postComment($postId, $author, $comment)
     {
         $db = $this->dbConnect();
@@ -27,25 +19,27 @@ class CommentManager extends Manager
         $affectedLines = $comments->execute(array($postId, $author, $comment));
         return $affectedLines;
     }
-    
-    
-    
+
     // Signalement d'un commentaire
     public function postSignal($idComment)
     {
         $db = $this->dbConnect();
-        $comments = $db->prepare('INSERT INTO comments(comment_signal) VALUES(1)');
+        $comments= $db->prepare('INSERT INTO comments(comment_signal,comment_date) VALUES(1,NOW())');
         $affectedLines = $comments->execute(array($idComment));
         return $affectedLines;
     }
     
-    public function getAllComments()
+ 
+
+    public function getListComments()
     {
         $db = $this->dbConnect();
-        $comments = $db->prepare('SELECT * FROM comments');
-     
-        return $comments ;
+        $req  = $db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr FROM comments ORDER BY comment_date DESC');
+  
+    
+        return $req ;
     }
+
 }
 
 

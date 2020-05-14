@@ -1,63 +1,30 @@
 <?php
-require_once('ConnectManager.php');
+require_once('model/frontend/ConnectManager.php');
 
-class CommentManager extends Manager
+class CommentManagerBack extends Manager
 {
-    public function getComments($postId)
+    
+    public function getCommentsBack()
     {
         $db = $this->dbConnect();
-        $comments = $db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr FROM comments WHERE chapter_id = ? ORDER BY comment_date DESC');
-        $comments->execute(array($postId));
-    
-        return $comments;
+        $req= $db->query('SELECT * FROM comments ');
+       
+        return $req;
     }
 
-    public function getLastComment()
+    public function getCommentsSignal()
     {
         $db = $this->dbConnect();
-
-        $comment = $db->query('SELECT author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr FROM comments ORDER BY comment_date DESC LIMIT 1');
-        return $comment;
-    }
+        $req= $db->query('SELECT * FROM comments WHERE comment_signal=1');
     
-    public function postComment($postId, $author, $comment)
-    {
-        $db = $this->dbConnect();
-        $comments = $db->prepare('INSERT INTO comments(chapter_id, author, comment, comment_date) VALUES(?, ?, ?, NOW())');
-        $affectedLines = $comments->execute(array($postId, $author, $comment));
-        return $affectedLines;
-    }
-    
-    
-    
-    // Signalement d'un commentaire
-    public function postSignal($idComment)
-    {
-        $db = $this->dbConnect();
-        $comments = $db->prepare('INSERT INTO comments(comment_signal) VALUES(1)');
-        $affectedLines = $comments->execute(array($idComment));
-        return $affectedLines;
-    }
-    
-    // Récupérer les pseudos
-    public function getMessages($pseudo)
-    {
-        $db = $this->dbConnect();
-        $messages = $db->prepare('SELECT id, cont_name FROM contacts');
-        $affectedLines =$messages->execute(array($pseudo));
-    
-        return $affectedLines;
+        return $req;
     }
 
-    //insérer un pseudo
-    public function postPseudo($pseudo)
+    public function deleteComment($id_comment)
     {
         $db = $this->dbConnect();
-        $messages = $db->prepare('INSERT INTO contacts(cont_name) VALUES(?)');
-        $affectedLines = $messages->execute(array($pseudo));
-        return $affectedLines;
+        $req= $db->query('DELETE * FROM comments WHERE id = ?');
+        return $req;
     }
-    
+
 }
-
-

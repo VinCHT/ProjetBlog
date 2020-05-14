@@ -47,15 +47,6 @@
             </div>
         </div>
   <!--FIN FORMULAIRE DE CONTACT -->
-
-
-
-
-
-
-
-
-
 <h2>Voir la liste des commentaires</h2>
 
 <?php
@@ -66,7 +57,7 @@ while ($comment = $comments->fetch())
     <article class="chapitre" id="article1">
         <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
         <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
-        <p><a id="signalement" href="<?= "index.php?action=action&id=".$comment['id'] ?>">Signaler ce commentaire</a></p>
+        <p><a href="index.php?action=addSignal">Signaler</a></p>
         </article>
 </div> <!--fin div container-arrticles -->
 <hr class="style1">

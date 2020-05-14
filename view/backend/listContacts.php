@@ -1,11 +1,11 @@
-
 <?php $title = 'Accueil'; ?>
 <?php ob_start(); ?>
 <?php require('undermenu.php'); ?>
 
-<h2 class="titre-page">Liste des contacts</h2>
+<h2 class="titre-page">Liste des messages</h2>
+
 <?php
-while ($datamessages = $allContacts->fetch())
+while ($datamessages = $allContactsBack->fetch())
 {
 ?>
 <br>
@@ -30,18 +30,14 @@ while ($datamessages = $allContacts->fetch())
 
       <th>
       <?php 
-        if ($datamessages['confirm'] == 0) 
+        if ($datamessages['supprim'] == 0) 
       { 
       ?>
-        <a class="lien-navigation" href="index.php?=confirm=<?=htmlspecialchars($datamessages['id']) ?>">Confirmer</a>
+        <a class="lien-navigation" href="index.php?=supprim=<?=htmlspecialchars($datamessages['id']) ?>">Supprimer</a>
         <?php 
       }
         ?>
       </th>
-
-      <th>
-        <a class="lien-navigation" href="index.php?=supprim=<?=htmlspecialchars($datamessages['id']) ?>">Supprimer</a></th>
-      </tr>
     </tbody>
   </table>
 
@@ -49,12 +45,6 @@ while ($datamessages = $allContacts->fetch())
       }
       // $allContacts-closeCursor();
       ?>
-
-
-
-
-
-
 
 
 <?php $content = ob_get_clean(); ?>

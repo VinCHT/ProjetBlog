@@ -2,76 +2,12 @@
 require_once('model/frontend/CommentManager.php');
 require_once('model/frontend/ChapterManager.php');
 require_once('model/frontend/ContactManager.php');
-//a mettre dans controller backend
-function dashboard()
-{
-    // require('view/backend/administration.php');
-    require('view/backend/administration.php');
-}
-function backChapters()
-{
-    $chapterManager = new ChapterManager();
-    $posts = $chapterManager->getPosts();
-
-    require('view/backend/listPostsView.php');
-}
-
-function backContacts()
-{
-    // require('view/backend/administration.php');
-    require('view/backend/listContacts.php');
-}
-function login()
-{
-    // require('view/backend/administration.php');
-    require('view/backend/login.php');
-}
-// function creatComment()
-// {
-//     require('view/backend/creatComment.php');
-// }
-function singleComment()
-{
-    require('view/backend/singleCommentView.php');
-}
-
-function creatChapter()
-{
-    require('view/backend/creatChapter.php');
-}
-
-function adminChapters()
-{
-    // require('view/backend/administration.php');
-    require('view/frontend/blistPostsView.php');
-}
-
-function adminComments()
-{
-    // require('view/backend/administration.php');
-    require('view/frontend/blistComments.php');
-}
-
-function reportComments()
-{
-    // require('view/backend/administration.php');
-    require('view/frontend/reportComments.php');
-}
-
-
 
 function homeView() 
 {
     $chapterManager = new ChapterManager();
     $lastPost =$chapterManager->getLastPost();
     require('view/frontend/homeView.php');
-}
-
-function voir() 
-{
-    $chapterManager = new ChapterManager();
-    $lastPost =$chapterManager->getLastPost();
-    require('view/backend/postView2.php');
 }
 
 function listPostsView()
@@ -81,14 +17,7 @@ function listPostsView()
 
     require('view/frontend/listPostsView.php');
 }
-function listPostsView2()
-{
-    $chapterManager = new ChapterManager();
-    $posts = $chapterManager->getPosts();
-
-    require('view/backend/listPostsView2.php');
-}
-
+/*A EFFACER QUAND CA MARCHE DANS LE BACK*/
 
 function contactView()
 {
@@ -98,35 +27,12 @@ function contactView()
 function post()
 {
     $chapterManager= new ChapterManager();
-    $commentManager = new CommentManager();
-
     $post = $chapterManager->getPost($_GET['id']);
+    
+    $commentManager = new CommentManager();
     $comments = $commentManager->getComments($_GET['id']);
 
     require('view/frontend/postView.php');
-
-}
-function post2()
-{
-    $chapterManager= new ChapterManager();
-    $commentManager = new CommentManager();
-
-    $post = $chapterManager->getPost($_GET['id']);
-    $comments = $commentManager->getComments($_GET['id']);
-
-    require('view/backend/postView2.php');
-
-}
-
-function backComments()
-{
-    $chapterManager= new ChapterManager();
-    $commentManager = new CommentManager();
-
-    $post = $chapterManager->getPost($_GET['id']);
-    $comments = $commentManager->getComments($_GET['id']);
-
-    require('view/backend/backComments.php');
 
 }
 
@@ -143,59 +49,35 @@ function addComment($postId, $author, $comment)
     }
 }
 
-function allComments()
+function addSignal($idComment,$author, $comment)
 {
-    $commentsManager = new CommentManager();
-    $postComment = $commentsManager->getAllComments();
-  
-}
-
-function addComment2($postId, $author, $comment)
-{
-    $commentManager = new CommentManager();
-    $postComment = $commentManager->postComment($postId, $author, $comment);
-
-    if ($postComment === false) {
-        throw new Exception('Impossible d\'ajouter le commentaire !');
+    $signalManager = new CommentManager();
+    $signalContent = $signalManager->postSignal($idComment,$author, $comment);
+    if ($signalContent === false) 
+    {
+        throw new Exception('Impossible denvoyer le message !');
     }
     else {
-        header('Location: index.php?action=post2&id=' . $postId);
+        header('Location: index.php?action=listPostsView');
     }
 }
 
-function addMessage($author,$subject, $content)
+
+
+function addMessage($author, $subject, $content)
 {
     $contentManager = new ContactManager();
     $postContent = $contentManager->postContact($author, $subject, $content);
-  
-}
-
-
-function AllMessages()
-{
-    $allMessagesManager = new ContactManager();
-    $allContacts = $allMessagesManager->getContacts();
-    require('view/backend/listContacts.php');
-}
-
-function oneDelete()
-{
-    $messageDelete = new ContactManager();
-    $adelete = $messageDelete->goDelete();
-  
-}
-
-function addSignal($postId, $author, $comment)
-{
-    $affectedLines = postSignal($postId, $author, $comment);
-
-    if ($affectedLines === false) {
-        throw new Exception('Impossible de signaler le commentaire !');
+    if ($postContent === false) 
+    {
+        throw new Exception('Impossible d\'ajouter le message !');
     }
     else {
-        header('Location: index.php?action=post&id=' . $postId);
+        header('Location: index.php?action=contactView');
     }
 }
+
+
 
 
 

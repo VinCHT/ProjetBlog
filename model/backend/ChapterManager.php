@@ -1,32 +1,23 @@
 <?php
-require_once('ConnectManager.php');
+require_once('model/frontend/ConnectManager.php');
 
-class ChapterManager extends Manager
+class ChapterManagerBack extends Manager
 {
-    public function getPosts()
+    
+    public function getPostsBack()
     {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%i\') AS creation_date_fr FROM chapters ORDER BY creation_date DESC LIMIT 0, 5');
-    
-        return $req;
-    }
-    
-    public function getLastPost()
-    {
-        $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%i\') AS creation_date_fr FROM chapters ORDER BY creation_date DESC LIMIT 1');
+        $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%i\') AS creation_date_fr FROM chapters WHERE publication= 1  ORDER BY creation_date DESC');
     
         return $req;
     }
 
-    public function getPost($postId)
+    public function getDrafts()
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin\') AS creation_date_fr FROM chapters WHERE id = ?');
-        $req->execute(array($postId));
-        $post = $req->fetch();
+        $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%i\') AS creation_date_fr FROM chapters WHERE publication= 2  ORDER BY creation_date DESC');
     
-        return $post;
+        return $req;
     }
 }
 
