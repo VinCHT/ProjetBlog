@@ -31,7 +31,7 @@
                                
                             </div>
                         </div>
-                        <input type="submit" class="btn btn-success"/> 
+                        <button type="submit">Valider</button> 
                     </form>
                 </div>
             </div>

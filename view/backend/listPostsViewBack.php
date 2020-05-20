@@ -13,19 +13,20 @@ while ($datapostsBack = $postsBack->fetch())
 <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">Chapitre n°</th>
+      <th class ="effacerColResp" scope="col">Chapitre n°</th>
       <th scope="col">Titre</th>
       <th scope="col">Contenu</th>
-      <th scope="col">Date de création</th>
+      <th class ="effacerColResp" scope="col">Date de création</th>
       <th class ="gestion" scope="col"colspan="2">Gestion</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th scope="row"><?= htmlspecialchars($datapostsBack['id']) ?></th>
+      <th class ="effacerColResp" scope="row"><?= htmlspecialchars($datapostsBack['id']) ?></th>
       <td><?= htmlspecialchars($datapostsBack['title']) ?></td>
       <td><?= htmlspecialchars($datapostsBack['content']) ?></td>
-      <td>Le <?= $datapostsBack['creation_date_fr'] ?></td>
+      <td class ="effacerColResp">Le <?= $datapostsBack['creation_date_fr'] ?></td>
+      <th class ="effacerColResp">Modifier</th>
       <th>Suprimer</th>
     </tr>
   </tbody>
@@ -39,7 +40,7 @@ while ($datapostsBack = $postsBack->fetch())
   <thead class="thead-light">
     <tr>
     
-      <th scope="col"><a href="index.php?action=creatChapter" type="submit" class="btn btn-success">+ Ajouter un nouveau chapitre</a></th>
+      <th scope="col"><a href="index.php?action=createChapter" type="submit">+ Ajouter un nouveau chapitre</a></th>
     </tr>
   </thead>
 </table>
@@ -55,19 +56,20 @@ while ($dataDrafts = $postsDrafts->fetch())
 <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">Chapitre n°</th>
+      <th class ="effacerColResp" scope="col">Chapitre n°</th>
       <th scope="col">Titre</th>
-      <th scope="col">Extrait</th>
-      <th scope="col">Date de création</th>
+      <th scope="col">Contenu</th>
+      <th class ="effacerColResp" scope="col">Date de création</th>
       <th class ="gestion" scope="col"colspan="2">Gestion</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th scope="row"><?= htmlspecialchars($dataDrafts['id']) ?></th>
+      <th class ="effacerColResp" scope="row"><?= htmlspecialchars($dataDrafts['id']) ?></th>
       <td><?= htmlspecialchars($dataDrafts['title']) ?></td>
       <td><?= htmlspecialchars($dataDrafts['content']) ?></td>
-      <td>Le <?= $dataDrafts['creation_date_fr'] ?></td>
+      <td class ="effacerColResp">Le <?= $dataDrafts['creation_date_fr'] ?></td>
+      <th>Modifier</th>
       <th>Suprimer</th>
     </tr>
   </tbody>
@@ -80,8 +82,7 @@ while ($dataDrafts = $postsDrafts->fetch())
 <table class="table">
   <thead class="thead-light">
     <tr>
-    
-      <th scope="col"><a href="index.php?action=creatChapter" type="submit" class="btn btn-success">+ Ajouter un nouveau chapitre</a></th>
+      <th scope="col"><a href="index.php?action=createChapter" type="submit">+ Ajouter un nouveau chapitre</a></th>
     </tr>
   </thead>
 </table>

@@ -12,32 +12,23 @@ while ($datamessages = $allContactsBack->fetch())
 <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">n°</th>
+      
       <th scope="col">Nom</th>
-      <th scope="col">Subject</th>
-      <th scope="col">Date</th>
+      <th class ="effacerColResp" scope="col">Subject</th>
+      <th class ="effacerColResp" scope="col">Date</th>
       <th scope="col">Message</th>
       <th class ="gestion" scope="col"colspan="2">Gestion</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th scope="row"><?= htmlspecialchars($datamessages['id']) ?></th>
+ 
       <td><?= htmlspecialchars($datamessages['author']) ?></td>
-      <td><?= htmlspecialchars($datamessages['content_subject']) ?></td>
-      <td><?= htmlspecialchars($datamessages['content_date']) ?></td>
+      <td class ="effacerColResp"><?= htmlspecialchars($datamessages['content_subject']) ?></td>
+      <td class ="effacerColResp"><?= htmlspecialchars($datamessages['content_date']) ?></td>
       <td><?= htmlspecialchars($datamessages['content']) ?></td>
-
-      <th>
-      <?php 
-        if ($datamessages['supprim'] == 0) 
-      { 
-      ?>
-        <a class="lien-navigation" href="index.php?=supprim=<?=htmlspecialchars($datamessages['id']) ?>">Supprimer</a>
-        <?php 
-      }
-        ?>
-      </th>
+      <th><a href="index.php?action=deleteM&amp;id=<?=$datamessages['id'] ?>">Supprimer</a></th>
+     
     </tbody>
   </table>
 

@@ -41,7 +41,7 @@
                                
                             </div>
                         </div>
-                        <input type="submit" class="btn btn-success"/> 
+                        <button type="submit">Valider</button> 
                     </form>
                 </div>
             </div>
@@ -57,8 +57,8 @@ while ($comment = $comments->fetch())
     <article class="chapitre" id="article1">
         <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
         <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
-        <p><a href="index.php?action=addSignal">Signaler</a></p>
-        </article>
+        <p><a href="index.php?action=signal&amp;id=<?=$comment['id'] ?>">Signaler</a></p>
+    </article>
 </div> <!--fin div container-arrticles -->
 <hr class="style1">
 <br>

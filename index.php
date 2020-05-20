@@ -14,15 +14,15 @@ try {
         elseif ($_GET['action'] == 'listPostsViewBack') {
             listPostsViewBack();
         } 
+        elseif ($_GET['action'] == 'createChapter') {
+            createChapter();
+        } 
       
         elseif ($_GET['action'] == 'contactView') {
             contactView();
         }
         elseif ($_GET['action']=='dashboard') {
             dashboard();
-        }
-        elseif ($_GET['action']=='creatChapter') {
-            creatChapter();
         }
        
         elseif ($_GET['action']=='singleComment') {
@@ -68,13 +68,29 @@ try {
                 throw new Exception('Aucun identifiant de chapitre envoyé');
             }
         }
-        elseif ($_GET['action'] == 'addSignal')
+
+        // Signaler un commentaire
+        elseif ($_GET['action'] == 'signal')
         {
-            addSignal($_GET['id'], $_POST['author'], $_POST['comment']);
-           
+            signal($_GET['id']);
+        }
+        // Approuver un commentaire
+        elseif ($_GET['action'] == 'approve') 
+        {
+            approve($_GET['id']);
+        }
+        // Supprimer un commentaire
+        elseif ($_GET['action'] == 'delete') 
+        {
+            delete($_GET['id']);
+        }
+        // Supprimer un message
+        elseif ($_GET['action'] == 'deleteM') 
+        {
+            deleteM($_GET['id']);
         }
 
-
+        
 
         elseif ($_GET['action'] == 'addMessage') 
         {
@@ -88,22 +104,19 @@ try {
             }
             
         }
-      
-    
+        
+     
         elseif ($_GET['action'] == 'getMessages') 
         {
             AllMessages();
         }
         elseif ($_GET['action'] == 'getComments') 
         {
-            AllComments();
+            AllCommentsBack();
         }
+        
 
-        // ADMIN - Supprimer un commentaire
-        elseif ($_GET['action'] == 'deleteComment')
-        {
-            deleteComment();
-        }
+       
 
 
 

@@ -12,4 +12,14 @@ class ContactManagerBack extends Manager
         return $req;
     }
 
+    //SUPPRIMER COMMENTAIRE
+    public function suppressionM($messageId) 
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('DELETE FROM messages WHERE id = ?');
+        $req->execute(array($messageId));
+   
+        return $req;
+    }
+
 }

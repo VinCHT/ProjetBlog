@@ -46,21 +46,11 @@ function addComment($postId, $author, $comment)
     }
     else {
         header('Location: index.php?action=post&id=' . $postId);
+        
     }
 }
 
-function addSignal($idComment,$author, $comment)
-{
-    $signalManager = new CommentManager();
-    $signalContent = $signalManager->postSignal($idComment,$author, $comment);
-    if ($signalContent === false) 
-    {
-        throw new Exception('Impossible denvoyer le message !');
-    }
-    else {
-        header('Location: index.php?action=listPostsView');
-    }
-}
+
 
 
 

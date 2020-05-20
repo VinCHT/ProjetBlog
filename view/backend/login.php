@@ -12,11 +12,13 @@
                             Se connecter
                         </span>
                      
-                        <div class="col-md-12">
-                            <input type="text" name="pseudo" id="pseudo" class="form-control" placeholder="Pseudo"/>
+                        <div class="wrap-input2 validate-input" data-validate="Name is required">
+                            <label for="author">Pseudo</label><br />
+                            <input class="input2" type="text" id="author" name="author" />
                         </div>
-                        <div class="col-md-12">
-                            <input type="password" name="pass" id="password" class="form-control" placeholder="Mot de passe"/>
+                        <div class="wrap-input2 validate-input" data-validate="password is required">
+                            <label for="mdp">Mot de passe</label><br />
+                            <input type="password" class="input2" name="pass" id="password"/>
                         </div>
                   
                         <div class="container-contact2-form-btn">
@@ -24,7 +26,7 @@
                                 <div class="contact2-form-bgbtn"></div>                             
                             </div>
                         </div>
-                        <input type="submit" class="btn btn-success" placeholder="Connexion"/> 
+                        <button type="submit">Valider</button> 
                     </form>
                 </div>
             </div>

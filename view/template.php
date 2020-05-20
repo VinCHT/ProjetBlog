@@ -13,7 +13,6 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <!-- Titre de l'onglet est au sein d'une variable -->
         <title><?= $title ?></title>
-
     </head>
     <body>
   
@@ -23,6 +22,8 @@
 
      <!-- Affichage du contenu de la page -->
      <?= $content ?>
+     <!-- Tiny API Key
+     7qa3o00yg75okl9rojzpgdhn5im31vdn0qth87r52naw9g5s -->
 
 
      <br>

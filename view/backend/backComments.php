@@ -2,7 +2,7 @@
 <?php ob_start(); ?>
 <?php require('undermenu.php'); ?>
 
-<h2 class="titre-page">Liste des commentaires</h2>
+<h2 class="titre-page">Liste des commentaires en ligne</h2>
 
 <?php
 while ($datacomments = $allCommentsBack->fetch())
@@ -12,18 +12,21 @@ while ($datacomments = $allCommentsBack->fetch())
 <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">n°</th>
+      
       <th scope="col">Nom</th>
       <th scope="col">Message</th>
+      <th scope="col">Date</th>
       <th class ="gestion" scope="col"colspan="2">Gestion</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-    <th scope="row"><?= htmlspecialchars($datacomments['id']) ?></th>
+  
       <td><?= htmlspecialchars($datacomments['author']) ?></td>
       <td><?= htmlspecialchars($datacomments['comment']) ?></td>
-      <em><a href="index.php?action=deleteComment">Supprimer</a></em>
+      <td><?= htmlspecialchars($datacomments['comment_date']) ?></td>
+
+      <th><a href="index.php?action=delete&amp;id=<?=$datacomments['id'] ?>">Supprimer</a></th>
       </tbody>
   </table>
   <?php
@@ -31,33 +34,39 @@ while ($datacomments = $allCommentsBack->fetch())
       // $allContacts-closeCursor();
       ?>
 
-<h2 class="titre-page">Liste des commentaires signalés</h2>
+<h2 class="titre-page">Liste des commentaires hors ligne signalés</h2>
+
 <?php
-while ($datacommentsSignal = $allCommentsSignalBack->fetch())
+while ($datacommentsSignal = $allCommentsBackSignal->fetch())
 {
 ?>
 <br>
 <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">n°</th>
+      
       <th scope="col">Nom</th>
       <th scope="col">Message</th>
+      <th scope="col">Date</th>
       <th class ="gestion" scope="col"colspan="2">Gestion</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-    <th scope="row"><?= htmlspecialchars($datacommentsSignal['id']) ?></th>
+  
       <td><?= htmlspecialchars($datacommentsSignal['author']) ?></td>
       <td><?= htmlspecialchars($datacommentsSignal['comment']) ?></td>
-      <th><a class="lien-navigation" href="index.php?=supprim=<?=htmlspecialchars($datacommentsSignal['id']) ?>">Supprimer</a></th>
+      <td><?= htmlspecialchars($datacommentsSignal['comment_date']) ?></td>
+
+      <th><a href="index.php?action=approve&amp;id=<?=$datacommentsSignal['id'] ?>">Approuver</a></th>
+      <th><a href="index.php?action=delete&amp;id=<?=$datacommentsSignal['id'] ?>">Supprimer</a></th>
       </tbody>
   </table>
   <?php
       }
       // $allContacts-closeCursor();
       ?>
+
 
 <?php $content = ob_get_clean(); ?>
 <?php require('view/templateBack.php'); ?>
