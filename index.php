@@ -32,17 +32,24 @@ try {
             login();
         }
       
-        elseif ($_GET['action'] == 'post') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
+        ////Poster un chapitre en frontend
+        elseif ($_GET['action'] == 'post') 
+        {
+            if (isset($_GET['id']) && $_GET['id'] > 0) 
+            {
                 post();
             }
             else {
                 throw new Exception('Aucun identifiant de chapitre envoyé');
             }
         }
-        elseif ($_GET['action'] == 'post2') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                post2();
+
+        //Poster un chapitre en backend
+        elseif ($_GET['action'] == 'postBack') 
+        {
+            if (isset($_GET['id']) && $_GET['id'] > 0) 
+            {
+                postBack();
             }
             else {
                 throw new Exception('Aucun identifiant de chapitre envoyé');
@@ -50,6 +57,22 @@ try {
         }
 
       
+
+        //Poster un brouillon en back
+        elseif ($_GET['action'] == 'postBackDraft') 
+        {
+            if (isset($_GET['id']) && $_GET['id'] > 0) 
+            {
+                postBackDraft();
+            }
+            else {
+                throw new Exception('Aucun identifiant de chapitre envoyé');
+            }
+        }
+
+    
+      
+        // Ajouter un commentaire
         elseif ($_GET['action'] == 'addComment') 
         {
             if (isset($_GET['id']) && $_GET['id'] > 0) 
@@ -91,7 +114,7 @@ try {
         }
 
         
-
+        //Ajouter un message
         elseif ($_GET['action'] == 'addMessage') 
         {
             if (!empty($_POST['author']) && !empty($_POST['content_subject']) && !empty($_POST['content'])) 
@@ -105,21 +128,61 @@ try {
             
         }
         
-     
+        //Récupérer tous les messages
         elseif ($_GET['action'] == 'getMessages') 
         {
             AllMessages();
         }
+
+         //Récupérer tous les commentaires
         elseif ($_GET['action'] == 'getComments') 
         {
             AllCommentsBack();
         }
         
-
+        //Modifier un chapitre
+        elseif ($_GET['action'] == 'modifChapitre') 
+        {
+          modifChapitre($_POST['title'], $_POST['content'], $_GET['id']);
+        }
+        
        
 
+        //Modifier un brouillon
+        elseif ($_GET['action'] == 'modifBrouillon') 
+        {
+            modifBrouillon($_POST['title'], $_POST['content'], $_GET['id']);
+           
+        }
+       
+    //Modifier un brouillon
+        elseif ($_GET['action'] == 'publishDraft') 
+        {
+            upDraft($_POST['publication']);
+        }
+    
+         //Supprimer un chapitre
+        elseif($_GET['action'] == 'suppChapitre')
+        {
+            suppChapitre($_GET['id']);
+        }
+
+        //Supprimer un brouillon
+        elseif($_GET['action'] == 'suppChapitreDraft')
+        {
+            suppChapitreDraft($_GET['id']);
+        }
 
 
+
+        //Editer un chapitre pour la première fois
+        elseif($_GET['action'] == 'editChapitre')
+        {
+            editChapitre($_POST['title'], $_POST['content'],$_POST['num_chapter'], $_POST['publication']); 
+        }
+
+          
+      
 
     }
     else {

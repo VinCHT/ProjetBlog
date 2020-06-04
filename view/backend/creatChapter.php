@@ -9,58 +9,22 @@
       });
     </script>
 <h2>Editer un chapitre</h2>
-    <br>
-    <div class="container-undermenu">
-    <div class="group">
-        <form action="upload" method="POST" enctype="multipart/form-data">
-            <div class="col-lg-12">
-                <div class="form-group row">
-                        <label for="title" class="col-lg-3">N° du chapitre</label>
-                        <div class="col-lg-9">
-                            <input type="text" name="title" class="form-control" id="title"/>
-                        </div>
-                    </div>
-                <div class="form-group row">
-                    <label for="title" class="col-lg-3">Titre</label>
-                    <div class="col-lg-9">
-                    <input type="text" name="title" class="form-control" id="title"/>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="title" class="col-lg-3">Contenu</label>
-                    <div class="col-lg-9">
-                    <textarea id="mytextarea">Hello, World!</textarea>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="title" class="col-lg-3">Image</label>
-                    <div class="col-lg-9">
-                        <!-- On limite le fichier à 100Ko -->
-                        <input type="hidden" name="MAX_FILE_SIZE" value="100000">
-                        <input type="file" name="avatar">
-                    </div>
-                </div>
-                <br>
-                <table class="table">
-                    <thead class="thead-light">
-                        <tr>
-                        <th scope="col"><a href="index.php?action=createChapter" type="submit">Publier</a></th>
-                        </tr>
-                    </thead>
-                    </table>
-                    <table class="table">
-                    <thead class="thead-light">
-                        <tr>
-                      
-                        <th scope="col"><a href="index.php?action=createChapter" type="submit">Enregistrer le brouillon</a></th>
-                        </tr>
-                    </thead>
-                    </table>
-            </div>
-        </form>
-        </div>
-    </div>
-
+  
+      
+      
+<div class="container-undermenu">
+  <form class="form"method="post" action="index.php?action=editChapitre&amp;id= ">
+   <input type="text" placeholder="Titre" id="title" name="title" />
+   <input type="text" placeholder="N° de chapitre" id="title" name="num_chapter" /><br><br><br>
+   <textarea id="mytextarea" name="content"  rows="5" cols="50" placeholder="Texte du chapitre"></textarea><br>
+   <select name="publication">
+        <option value="1">Publier</option>
+        <option value="2">Enregister le brouillon</option>
+       
+      </select>
+   <button type="submit" name="insert">Envoyer</button><br><br>
+ </form>
+</div>
 
 <?php $content = ob_get_clean(); ?>
 <?php require('view/templateBack.php'); ?>

@@ -4,17 +4,6 @@ require_once('model/frontend/ConnectManager.php');
 class CommentManagerBack extends Manager
 {
 
-//récupère tous les commentaires fonction pour travailler- a effacer duprojet ensuite
-// public function getCommentsBack()
-// {
-//     $db = $this->dbConnect();
-//     $req= $db->query('SELECT * FROM comments ');
-   
-//     return $req;
-// }
-
-
-
     //récupère tous les commentaires sauf les signalés
     public function getCommentsBack()
     {

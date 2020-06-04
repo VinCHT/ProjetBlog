@@ -21,16 +21,7 @@ class ChapterManagerBack extends Manager
         return $req;
     }
 
-    //ENVOYER UN CHAPITRE DANS LA BDD
-    public function postChapitre($title, $content) 
-	{
-		$db = $this->dbConnect();
-		$inserChap = $db->prepare('INSERT INTO chapters(title, content, creation_date) VALUES (?, ?, NOW())');
-        $chapitre = $inserChap->execute(array($title, $content));
-		
-		return $chapitre;
-
-    }
+  
     
     //supprimer un chapitre et ses commentaires associés
     public function deletChapitre($dataId) 
@@ -38,21 +29,97 @@ class ChapterManagerBack extends Manager
         $db = $this->dbConnect();
         $comment = $db->prepare('DELETE FROM comments WHERE id = ?');
         $comment->execute([$dataId]);
-        $req = $db->prepare('DELETE FROM posts WHERE id = ?');
+        $req = $db->prepare('DELETE FROM chapters WHERE id = ?');
         $req->execute(array($dataId));
        	return $req;
     }
 
+    //supprimer un chapitre et ses commentaires associés
+    public function deletChapitreDraft($dataId) 
+	{ 
+        $db = $this->dbConnect();
+        $comment = $db->prepare('DELETE FROM comments WHERE id = ?');
+        $comment->execute([$dataId]);
+        $req = $db->prepare('DELETE FROM chapters WHERE id = ?');
+        $req->execute(array($dataId));
+       	return $req;
+    }
 
-    //modifier un chapitre 
-    public function updateChapitre($title, $content, $postId) 
+    public function getPostBack($postId)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin\') AS creation_date_fr FROM chapters WHERE id = ?');
+        $req->execute(array($postId));
+        $postBack = $req->fetch();
+    
+        return $postBack;
+    }
+
+    public function getPostBackDraft($postId)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin\') AS creation_date_fr FROM chapters WHERE id = ?');
+        $req->execute(array($postId));
+        $postBackDraft = $req->fetch();
+    
+        return $postBackDraft;
+    }
+
+    //Modifier un chapitre
+    public function updateChapitre($title, $content, $postId) //modifie chapitre 
 	{
 		$db = $this->dbConnect();
-		$updChap = $db->prepare('UPDATE chapters SET title = ?, content = ? WHERE id = ?');
-        $chapOk = $updChap->execute(array($title, $content,$postId));
-		return $chapOk;
+		$req = $db->prepare('UPDATE chapters SET title = ?, content = ? WHERE id = ?');
+        $postBack = $req->execute(array($title, $content,$postId));
+        return $postBack;
+    }
 
-	}
+    //Modifier un brouillon
+    public function updateBrouillon($title, $content, $postId) //modifie chapitre 
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('UPDATE chapters SET title = ?, content = ? WHERE id = ?');
+        $postBackDraft  = $req->execute(array($title, $content,$postId));
+        return $postBackDraft ;
+    }
+
+    public function updateTheDraft($publication) //modifie chapitre 
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('UPDATE chapters SET publication= 1');
+        $postUpBackDraft = $req->execute(array($publication));
+        return $postUpBackDraft;
+    }
+    
+  
+
+    // Ajouter un chapitre -> publié ou brouilon
+    public function postChapitre($title, $content, $numChapter, $publication) 
+	{
+		$db = $this->dbConnect();
+		$inserChap = $db->prepare('INSERT INTO chapters(title, content, num_chapter, creation_date, publication) VALUES (?, ?, ?, NOW(),?)');
+        $chapitre = $inserChap->execute(array($title, $content, $numChapter, $publication));
+		
+		return $chapitre;
+
+    }
+
+    
+    // Publier le brouilon
+    public function draftOnline($content,$postId) 
+	{
+		$db = $this->dbConnect();
+		$inserTheDraft = $db->prepare('UPDATE chapters SET content = ? WHERE id = ?');
+        $draftOnline= $inserTheDraft->execute(array($content,$postId));
+		
+		return $draftOnline;
+
+    }
+
+ 
+    
+    
+    
 }
 
 

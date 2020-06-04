@@ -15,7 +15,7 @@
                 <br>
                 <p><a href="index.php?action=listPostsView">Retour à la liste des chapitres</a></p>
             </article>
-         </div> <!--fin div container-arrticles -->
+</div> <!--fin div container-articles -->
 
 <!-- FORMULAIRE DE CONTACT -->
 <div class="bg-contact2">

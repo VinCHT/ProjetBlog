@@ -40,7 +40,6 @@ function listPostsViewBack()
 }
 
 
-
 function createChapter()
 {
  
@@ -105,5 +104,93 @@ function deleteM($messageId)
 		header('Location: index.php?action=dashboard');
 
     }
+
+}
+
+//Afficher un chapitre dans le backend pour pouvoir le modifier par la suite
+function postBack()
+{
+    $chapterManagerBack= new ChapterManagerBack();
+    $postBack = $chapterManagerBack->getPostBack($_GET['id']);
+    
+    require('view/backend/chapterViewBack.php');
+
+}
+
+//Afficher un brouillon dans le backend pour pouvoir le modifier par la suite
+function postBackDraft()
+{
+    $chapterManagerBack= new ChapterManagerBack();
+    $postBackDraft = $chapterManagerBack->getPostBackDraft($_GET['id']);
+    
+    require('view/backend/chapterViewBackDraft.php');
+
+}
+
+
+
+//Modifier un chapitre
+function modifChapitre($title, $content,$postId) 
+{
+	$chapModif = new ChapterManagerBack();
+	$postBack = $chapModif->updateChapitre($title, $content,$postId);
+	
+	require('view/backend/administration.php');
+}
+
+//Modifier un brouillon
+function modifBrouillon($title, $content,$postId) 
+{
+	$brouillonModif = new ChapterManagerBack();
+	$postBackDraft = $brouillonModif->updateBrouillon($title, $content,$postId);
+	
+	require('view/backend/administration.php');
+}
+
+
+function upDraft($publication) 
+{
+	$upDraft = new ChapterManagerBack();
+	$postUpBackDraft = $upDraft->updateTheDraft($publication);
+	
+	require('view/backend/administration.php');
+}
+
+
+
+// supprimer un chapitre
+function suppChapitre($dataId)
+{
+	$supprime = new ChapterManagerBack();
+	$deletedPost = $supprime->deletChapitre($dataId);
+
+	require('view/backend/administration.php');
+}
+
+// supprimer un brouillon
+function suppChapitreDraft($dataId)
+{
+	$supprime = new ChapterManagerBack();
+	$deletedPostDraft = $supprime->deletChapitreDraft($dataId);
+
+	require('view/backend/administration.php');
+}
+
+
+//Ajouter un chapitre
+function editChapitre($title, $content,$numChapter,$publication)
+{
+	$chapEdit = new ChapterManagerBack();
+	$chapitre = $chapEdit->postChapitre($title, $content,$numChapter,$publication);
+	require('view/backend/administration.php');
+
+}
+
+//Publier un brouillon
+function postDraftOnline($content,$postId)
+{
+	$draftEdit = new ChapterManagerBack();
+	$draftOnline = $draftEdit->draftOnline($content,$postId);
+	require('view/backend/administration.php');
 
 }
