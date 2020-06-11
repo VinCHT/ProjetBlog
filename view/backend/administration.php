@@ -1,3 +1,7 @@
+<?php
+require_once 'functions/auth.php';
+forcer_utilisateur_connecte();
+?>
 
 <?php $title = 'Accueil'; ?>
 <?php ob_start(); ?>
@@ -5,7 +9,7 @@
 <h2 class="titre-page">Administration</h2>
 
 <?php require('undermenu.php'); ?>
- <?php $content = ob_get_clean(); ?>
+<?php $content = ob_get_clean(); ?>
 <?php require('view/templateBack.php'); ?>
 
   

@@ -16,17 +16,13 @@
     </head>
     <body>
   
-
     <?php require('frontend/header.php');?>
-    <br>
-
+   
      <!-- Affichage du contenu de la page -->
      <?= $content ?>
      <!-- Tiny API Key
      7qa3o00yg75okl9rojzpgdhn5im31vdn0qth87r52naw9g5s -->
 
-
-     <br>
      <?php require('frontend/footer.php');?>
     </body>
 </html>

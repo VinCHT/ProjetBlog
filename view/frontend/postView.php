@@ -1,17 +1,17 @@
 <?php $title = 'Tous les chapitres'; ?>
 
 <?php ob_start(); ?>
-<img src="http://developpeur-aura.com/Jean_Forteroche/public/images/header.jpg" class="card-img-top" class="img-fluid" alt="Responsive image">
+<img src="http://developpeur-aura.com/Jean_Forteroche/public/images/header.jpg" class="card-img-top" alt="Responsive image">
 <h2 class="titre-page">Billet simple pour l'Alaska</h2>
 
 <div class="container-articles"> 
             <article class="chapitre" id="article1">
-            <div id="chapitre-img"><img src="http://developpeur-aura.com/Jean_Forteroche/public/images/article4.jpeg" alt="..."></div>                                  
+            <div class="chapitre-img"><img src="http://developpeur-aura.com/Jean_Forteroche/public/images/article4.jpeg" alt="..."></div>                                  
                 <div id="chapitre-numero">Chapitre : <?= htmlspecialchars($post['id']) ?></div>
                 <br>
-                <h3 id="chapitre-title"><?= htmlspecialchars($post['title']) ?></h3>    
-                <div id="chapitre-date"><?= $post['creation_date_fr'] ?></div>             
-                <div id="chapitre-text"><?= nl2br(htmlspecialchars($post['content'])) ?></div>
+                <h3 class="chapitre-title"><?= htmlspecialchars($post['title']) ?></h3>    
+                <div class="chapitre-date"><?= $post['creation_date_fr'] ?></div>             
+                <div class="chapitre-text"><?= nl2br(htmlspecialchars($post['content'])) ?></div>
                 <br>
                 <p><a href="index.php?action=listPostsView">Retour à la liste des chapitres</a></p>
             </article>
@@ -21,7 +21,7 @@
 <div class="bg-contact2">
             <div class="container-contact2">
                 <div class="wrap-contact2">
-                    <form class="contact2-form validate-form"action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
+                    <form class="contact2-form validate-form" action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
                         <span class="contact2-form-title">
                             Postez votre commentaire
                         </span>
@@ -54,7 +54,7 @@ while ($comment = $comments->fetch())
 {
 ?>
 <div class="container-articles"> 
-    <article class="chapitre" id="article1">
+    <article class="chapitre">
         <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
         <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
         <p><a href="index.php?action=signal&amp;id=<?=$comment['id'] ?>">Signaler</a></p>

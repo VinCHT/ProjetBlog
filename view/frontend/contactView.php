@@ -2,12 +2,12 @@
 
 
 <?php ob_start(); ?>
-<img src="http://developpeur-aura.com/Jean_Forteroche/public/images/header.jpg" class="card-img-top" class="img-fluid" alt="Responsive image">
+<img src="http://developpeur-aura.com/Jean_Forteroche/public/images/header.jpg" class="card-img-top" alt="Responsive image">
 <!-- FORMULAIRE DE CONTACT -->
 <div class="bg-contact2">
             <div class="container-contact2">
                 <div class="wrap-contact2">
-                    <form class="contact2-form validate-form"action="index.php?action=addMessage&amp;id=<?= $post['id'] ?>" method="post">
+                    <form class="contact2-form validate-form" action="index.php?action=addMessage&amp;id=<?= $post['id'] ?>" method="post">
                         <span class="contact2-form-title">
                             Nous contacter
                         </span>

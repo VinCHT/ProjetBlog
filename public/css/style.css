@@ -5,8 +5,6 @@
 /*HEADER*/
 /*STYLE DU MENU EN HAUT DE LA PAGE*/
 
-
-
 .navbar-text
 {
   margin-right:200px;
@@ -40,7 +38,7 @@ h1 {
 }
 
 h2  {
-  color:#8C6A45;
+  color:white;
 }
 
 p a{
@@ -58,15 +56,25 @@ a {
   color: #8c8b8b;
 }
 
+
+
 tr {
 text-align: justify;
+max-width: 20px;
+color:#8C6A45;
 }
-
+.contenu-center {
+color:black;
+}
 td {
-text-align: justify;
+text-align: center;
+max-width: 1px;
+color:black;
 }
 th {
 text-align: justify;
+
+max-width: 20px;
 }
 .lien-navigation
 {
@@ -93,6 +101,7 @@ font-size: 18px;
   width:50%;
   height:50%;
 }
+
 
 /*ONGLETS s'inscrire et se connecter */
 .connexion-social {
@@ -169,7 +178,7 @@ img {
 
 /*style du contenu pour chapitres*/
 .container-articles {
-  width:100%;
+  width:90%;
   margin:auto;
   display:flex;
   margin:130px;
@@ -179,23 +188,23 @@ img {
 .chapitre {
   position: relative;
   margin: auto;
-  width:50%;
-  min-height: 103px;
+  width:80%;
+  min-height:50px;
   text-align: justify;
   display:flex;
   flex-direction:column;
 }
 /*Publié le*/
-#chapitre-date {
+.chapitre-date {
   font-size: 1rem;
   font-style: italic;
 }
 /*NUMERO DU CHAPITRE*/
-#chapitre-numero {
+.chapitre-numero {
   font-size: 2.5rem;
 }
 /*TITRE DU CHAPITRE*/
-#chapitre-title {
+.chapitre-title {
   font-size: 2.25rem;
   line-height: 1.1;
   margin: 10px 0px 10px 0;
@@ -205,17 +214,22 @@ img {
 }
 /*EMPLACEMENT*/
 .titre-page {
-  margin: 50px 20px 100px 20px;
-  width:70%;
+  display:flex;
+  padding: 20px;
+  margin:0px;
+  width:100%;
   font-size: 40px;
   text-transform: uppercase;
   letter-spacing: 0.01em;
   font-family : 'Open Sans Condensed', sans-serif;
+  justify-content: center;
+  background-color:#343a40;
+  color:white;
 
 }
 
 /*TEXT DU CHAPITRE*/
-#chapitre-text {
+.chapitre-text {
   font-size: 1.25rem;
   line-height: normal;
   
@@ -286,12 +300,9 @@ button {
 }
 
 
-
-/* basic stylings ------------------------------------------ */
-
-.formmulaire	{ 
+.formulaire	{ 
 font-family:'Roboto';
-width:600px; 
+width:100%; 
 margin:30px auto 0; 
 display:block; 
 background:#FFF;
@@ -303,10 +314,12 @@ font-size:18px;
 padding:10px 10px 10px 5px;
 display:block;
 width:300px;
-border:none;
+border-width:1px;
+border-style:solid;
+border-color:black;
 border-bottom:1px solid #757575;
 }
-input:focus 		{ outline:none; }
+
 
 /* LABEL ======================================= */
 label 				 {
@@ -415,7 +428,7 @@ background: #FBFBFB;
 
 /*couleur fond formulaire*/
 .wrap-contact2 {
-width: 790px;
+width: 100%;;
 background: #fff;
 border-radius: 10px;
 overflow: hidden;
@@ -423,7 +436,7 @@ padding: 72px 55px 90px 55px;
 }
 
 .contact2-form {
-width: 100%;
+width: 80%;
 }
 
 /*NOUS CONTACTER TEXTE*/
@@ -560,10 +573,16 @@ line-height: 1.2;
 left: 0;
 }
 
+/*Aperçu de l'image envoyée dans createChapter.php*/
+#image {
+width:20%;;
+}
 
-
-
-
+/*Dernier option du sous menu*/
+#lastChoiceColor {
+background-color: #8C6A45;
+color:whitesmoke;
+}
 /* ANIMATIONS ================ */
 @-webkit-keyframes inputHighlighter {
 from { background:#5264AE; }
@@ -591,19 +610,29 @@ to 	{ width:0; background:transparent; }
 .container-undermenu
 {
   display:flex;
-  justify-content:center
+  padding:10px;
+  justify-content:center;
+  width:100%;
+  height:600px;
+  background-color: #80A3AD;
 }
+
+
 /*Partie admin -> page principale -> les menus*/
 .group {
   width:100%;
-  margin: 50px;
+  margin: 20px;
+  padding:50px;
   max-width: 800px;
   display:flex;
   flex-direction: column;
   justify-content:center;
 } 
 
-
+/*Menu bakcend*/
+.list-group-item {
+padding: 20px;
+}
 
 .large-header {
   position: relative;
@@ -637,7 +666,7 @@ to 	{ width:0; background:transparent; }
 }
 .table {
 text-align: center;
-  color:#F9F1E9;
+  color:#80A3AD;
 }
 th{
 text-align: center;
@@ -647,9 +676,34 @@ text-align: center;
 }
 tbody {
 text-align: center;
+color:#80A3AD;
 }
 thead {
 text-align: center;
+}
+
+.editChapter {
+display:flex;
+align-items:center;
+justify-content: center;
+margin-top:100px;
+}
+
+#mytextarea {
+height:500px;
+width:100%;
+}
+
+
+.inputImage {
+border-bottom: #000;
+width:1000px;
+color:#8C6A45;
+}
+
+.bandBlue {
+background-color: #8c8b8b;
+height: 50px;
 }
 
 @media only screen and (max-width: 768px) {
@@ -696,11 +750,11 @@ text-align: center;
 
 }
 .chapitre-img {
-width:100%;
+width:50%;
 }
 
 .container-articles {
-  width:90%;
+  width:60%;
   margin:10px;
   display:flex;
   

@@ -94,11 +94,11 @@ class ChapterManagerBack extends Manager
   
 
     // Ajouter un chapitre -> publié ou brouilon
-    public function postChapitre($title, $content, $numChapter, $publication) 
+    public function postChapitre($title, $content, $numChapter, $publication,$alt) 
 	{
 		$db = $this->dbConnect();
-		$inserChap = $db->prepare('INSERT INTO chapters(title, content, num_chapter, creation_date, publication) VALUES (?, ?, ?, NOW(),?)');
-        $chapitre = $inserChap->execute(array($title, $content, $numChapter, $publication));
+		$inserChap = $db->prepare('INSERT INTO chapters(title, content, num_chapter, creation_date, publication, alt) VALUES (?, ?, ?, NOW(),?,?)');
+        $chapitre = $inserChap->execute(array($title, $content, $numChapter, $publication,$alt));
 		
 		return $chapitre;
 
@@ -116,9 +116,25 @@ class ChapterManagerBack extends Manager
 
     }
 
+  //Publier un brouillon
+  public function get1($postBackDraft) 
+  {
+      $db = $this->dbConnect();
+      $req = $db->prepare('UPDATE chapters SET publication = 1 WHERE id = ?');
+      $req->execute(array($postBackDraft));
  
+      return $req;
+  }
     
-    
+      //Dépublier un chapitre
+  public function get2($postBack) 
+  {
+      $db = $this->dbConnect();
+      $req = $db->prepare('UPDATE chapters SET publication = 2 WHERE id = ?');
+      $req->execute(array($postBack));
+ 
+      return $req;
+  }
     
 }
 

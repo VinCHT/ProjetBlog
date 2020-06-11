@@ -13,11 +13,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <!-- Titre de l'onglet est au sein d'une variable -->
         <script src="https://cdn.tiny.cloud/1/7qa3o00yg75okl9rojzpgdhn5im31vdn0qth87r52naw9g5s/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-        <!-- <script>
-            tinymce.init({
-                    selector: '#mytextarea'
-            });
-        </script> -->
+
         <title><?= $title ?></title>
 
     </head>
@@ -25,13 +21,12 @@
   
 
     <?php require('backend/headerBack.php');?>
-    <br>
+   
 
      <!-- Affichage du contenu de la page -->
      <?= $content ?>
 
 
-     <br>
      <?php require('backend/footerBack.php');?>
     </body>
 </html>

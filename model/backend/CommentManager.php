@@ -4,6 +4,7 @@ require_once('model/frontend/ConnectManager.php');
 class CommentManagerBack extends Manager
 {
 
+
     //récupère tous les commentaires sauf les signalés
     public function getCommentsBack()
     {

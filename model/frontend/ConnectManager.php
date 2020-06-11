@@ -10,3 +10,5 @@ class Manager
     return $db;
     }
 }
+
+//ADMIN : Jean root

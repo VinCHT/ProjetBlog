@@ -8,10 +8,10 @@ function dashboard()
     require('view/backend/administration.php');
 }
 
-function login()
-{
-    require('view/backend/login.php');
+function logout() {
+	require('logout.php');
 }
+
 
 function AllMessages()
 {
@@ -60,6 +60,22 @@ function signal($commentId) //signale un commentaire
 
     }
 
+}
+
+//ENVOYER UN BROUILLON EN PUBLICATION
+function draftToPublish($postBackDraft) //signale un commentaire
+{
+	$draft2publication = new ChapterManagerBack();
+	$bePublish = $draft2publication->get1($postBackDraft);
+	require('view/backend/administration.php');
+}
+
+//ENVOYER UN BROUILLON EN PUBLICATION
+function unpublished($postBack) //signale un commentaire
+{
+	$unPublication = new ChapterManagerBack();
+	$unPublish = $unPublication->get2($postBack);
+	require('view/backend/administration.php');
 }
 
 // Approuver un commentaire
@@ -178,10 +194,10 @@ function suppChapitreDraft($dataId)
 
 
 //Ajouter un chapitre
-function editChapitre($title, $content,$numChapter,$publication)
+function editChapitre($title, $content,$numChapter,$publication,$alt)
 {
 	$chapEdit = new ChapterManagerBack();
-	$chapitre = $chapEdit->postChapitre($title, $content,$numChapter,$publication);
+	$chapitre = $chapEdit->postChapitre($title, $content,$numChapter,$publication,$alt);
 	require('view/backend/administration.php');
 
 }

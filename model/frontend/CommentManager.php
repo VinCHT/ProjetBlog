@@ -4,8 +4,6 @@ require_once('ConnectManager.php');
 class CommentManager extends Manager
 {
 
-
-
     public function getComments($postId)
     {
         $db = $this->dbConnect();
@@ -33,8 +31,6 @@ class CommentManager extends Manager
     
         return $req ;
     }
-
-
 
 
 }

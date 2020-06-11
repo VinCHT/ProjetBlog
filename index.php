@@ -28,9 +28,10 @@ try {
         elseif ($_GET['action']=='singleComment') {
             singleComment();
         }
-        elseif ($_GET['action']=='login') {
-            login();
+        elseif ($_GET['action']=='logout') {
+            logout();
         }
+       
       
         ////Poster un chapitre en frontend
         elseif ($_GET['action'] == 'post') 
@@ -175,14 +176,56 @@ try {
 
 
 
-        //Editer un chapitre pour la première fois
+        //Editer un chapitre pour la première fois                   NE PAS OUBLIER DE POSTER IMAGE ET ALT
         elseif($_GET['action'] == 'editChapitre')
         {
-            editChapitre($_POST['title'], $_POST['content'],$_POST['num_chapter'], $_POST['publication']); 
+            editChapitre($_POST['title'], $_POST['content'],$_POST['num_chapter'], $_POST['publication'],$_POST['alt']); 
         }
 
+         //ENVOYER IMAGE
+         elseif($_GET['action'] == 'sendImage')
+         {
+                 
+                    // ENVOI FICHIER PHP
+            if (isset($_FILES['image']) && $_FILES['image'] ['error'] == 0) 
+            {
+                //variable pour l'erreur
+                $error=1;
+                // TAILLE
+                if ($_FILES['image']['size'] <= 3000000)
+                {
+                    // EXTENSION
+                    $informationsImage = pathinfo($_FILES['image']['name']);
+                    $extensionImage = $informationsImage['extension'];
+                    $extensionsArray = array('png', 'jpeg', 'jpg');
+
+                    if (in_array($extensionImage, $extensionsArray))
+                    {
+                        $address = 'public/images/'.time().rand().rand().'.'.$extensionImage;
+                        move_uploaded_file($_FILES['image']['tmp_name'], $address);
+                        
+                        $error=0;
+                    }
+                }
+               
+            }
+
+            require('view/backend/createChapter.php');
+         }
+ 
+
           
-      
+        // Publier un brouillon
+        elseif ($_GET['action'] == 'draftToPublish')
+        {
+            draftToPublish($_GET['id']);
+        }
+
+         // Dépublier un chapitre
+         elseif ($_GET['action'] == 'unpublished')
+         {
+            unpublished($_GET['id']);
+         }
 
     }
     else {

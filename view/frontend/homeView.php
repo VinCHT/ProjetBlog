@@ -2,7 +2,7 @@
 <?php $title = 'Accueil'; ?>
 <?php ob_start(); ?>
     <!-- BANNIERE -->
-    <img src="http://developpeur-aura.com/Jean_Forteroche/public/images/header.jpg" class="card-img-top" class="img-fluid" alt="Responsive image">
+    <img src="http://developpeur-aura.com/Jean_Forteroche/public/images/header.jpg" class="card-img-top" alt="Responsive image">
  <!--FIN BANNIERE -->
 <div id="container-content">
 
@@ -37,13 +37,13 @@
                 <article class="chapitre" id="article1">
                 <div class="chapitre-img"><img src="http://developpeur-aura.com/Jean_Forteroche/public/images/article4.jpeg" alt="..."></div>   
                 <br>                                
-                    <div id="chapitre-numero">Chapitre : <?= htmlspecialchars($data['id']) ?></div>
+                    <div class="chapitre-numero">Chapitre : <?= htmlspecialchars($data['id']) ?></div>
                     <br>
-                    <h3 id="chapitre-title"><?= htmlspecialchars($data['title']) ?></h3>   
+                    <h3 class="chapitre-title"><?= htmlspecialchars($data['title']) ?></h3>   
                     <br> 
-                    <div id="chapitre-date">Le<?= $data['creation_date_fr'] ?></div>
+                    <div class="chapitre-date">Le <?= $data['creation_date_fr'] ?></div>
                     <br>             
-                    <div id="chapitre-text"><?= nl2br(substr($data['content'], 0, 1000).'...') ?></div>
+                    <div class="chapitre-text"><?= nl2br(substr($data['content'], 0, 1000).'...') ?></div>
                     <br>
                     <em><a class="lien-navigation" href="index.php?action=post&amp;id=<?= $data['id'] ?>">Lire la suite</a></em>
                 </article>
