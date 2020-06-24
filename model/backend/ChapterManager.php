@@ -94,11 +94,11 @@ class ChapterManagerBack extends Manager
   
 
     // Ajouter un chapitre -> publié ou brouilon
-    public function postChapitre($title, $content, $numChapter, $publication,$alt) 
+    public function postChapitre($photo,$title, $content, $numChapter, $publication,$alt) 
 	{
 		$db = $this->dbConnect();
-		$inserChap = $db->prepare('INSERT INTO chapters(title, content, num_chapter, creation_date, publication, alt) VALUES (?, ?, ?, NOW(),?,?)');
-        $chapitre = $inserChap->execute(array($title, $content, $numChapter, $publication,$alt));
+		$inserChap = $db->prepare('INSERT INTO chapters(images,title, content, num_chapter, creation_date, publication, alt) VALUES (?, ?, ?,?, NOW(),?,?)');
+        $chapitre = $inserChap->execute(array($photo,$title, $content, $numChapter, $publication,$alt));
 		
 		return $chapitre;
 

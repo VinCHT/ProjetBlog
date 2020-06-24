@@ -24,6 +24,9 @@ try {
         elseif ($_GET['action']=='dashboard') {
             dashboard();
         }
+        elseif ($_GET['action']=='login') {
+            login();
+        }
        
         elseif ($_GET['action']=='singleComment') {
             singleComment();
@@ -144,7 +147,7 @@ try {
         //Modifier un chapitre
         elseif ($_GET['action'] == 'modifChapitre') 
         {
-          modifChapitre($_POST['title'], $_POST['content'], $_GET['id']);
+          modifChapitre($_POST['title'], $_POST['content'],$_FILES['img']['name'], $_GET['id']);
         }
         
        
@@ -179,7 +182,7 @@ try {
         //Editer un chapitre pour la première fois                   NE PAS OUBLIER DE POSTER IMAGE ET ALT
         elseif($_GET['action'] == 'editChapitre')
         {
-            editChapitre($_POST['title'], $_POST['content'],$_POST['num_chapter'], $_POST['publication'],$_POST['alt']); 
+            editChapitre($_FILES['img']['name'],$_POST['title'],$_POST['content'],$_POST['num_chapter'], $_POST['publication'],$_POST['alt']); 
         }
 
          //ENVOYER IMAGE

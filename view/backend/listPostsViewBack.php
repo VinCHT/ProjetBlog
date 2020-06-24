@@ -1,4 +1,3 @@
-
 <?php $title = 'Accueil'; ?>
 <?php ob_start(); ?>
 <?php require('undermenu.php'); ?>

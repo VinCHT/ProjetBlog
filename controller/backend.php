@@ -3,13 +3,40 @@ require_once('model/backend/CommentManagerBack.php');
 require_once('model/backend/ChapterManagerBack.php');
 require_once('model/backend/ContactManagerBack.php');
 
+// permet de vérifier si l'utilisateur est connecté ou non
+//  1/2
+function est_connecte(): bool {
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+    return !empty($_SESSION['connecte']);
+}
+
+//  2/2
+function forcer_utilisateur_connecte (): void {
+    if(!est_connecte()) {
+        
+        header('Location: index.php?action=login');
+        
+
+        exit();
+    }
+}
+
+// ALLER A LA PAGE DE CONNEXION
+function login()
+{
+    require('view/backend/login.php');
+}
+
+// ALLER A LA PAGE D'ADMINISTRATION
 function dashboard()
 {
     require('view/backend/administration.php');
 }
 
 function logout() {
-	require('logout.php');
+	require('view/backend/logout.php');
 }
 
 
@@ -146,10 +173,10 @@ function postBackDraft()
 
 
 //Modifier un chapitre
-function modifChapitre($title, $content,$postId) 
+function modifChapitre($title, $content, $photo, $postId) 
 {
 	$chapModif = new ChapterManagerBack();
-	$postBack = $chapModif->updateChapitre($title, $content,$postId);
+	$postBack = $chapModif->updateChapitre($title, $content, $photo, $postId);
 	
 	require('view/backend/administration.php');
 }
@@ -194,10 +221,10 @@ function suppChapitreDraft($dataId)
 
 
 //Ajouter un chapitre
-function editChapitre($title, $content,$numChapter,$publication,$alt)
+function editChapitre($photo,$title,$content, $numChapter, $publication,$alt)
 {
 	$chapEdit = new ChapterManagerBack();
-	$chapitre = $chapEdit->postChapitre($title, $content,$numChapter,$publication,$alt);
+	$chapitre = $chapEdit->postChapitre($photo,$title,$content, $numChapter, $publication,$alt);
 	require('view/backend/administration.php');
 
 }

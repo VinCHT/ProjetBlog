@@ -1,5 +1,5 @@
 <?php
-require_once 'functions/auth.php';
+require_once 'controller/backend.php';
 forcer_utilisateur_connecte();
 ?>
 

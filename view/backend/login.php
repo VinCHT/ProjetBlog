@@ -2,8 +2,10 @@
 <?php ob_start(); ?>
 <?php 
 $erreur = null;
+$password = '$2y$12$o0ZU/VaDaUhcRStMkohwd.i.Fnawfepte9dv9cgIbmoBF.lh9HQv6';
+
 if (!empty($_POST['pseudo']) && !empty($_POST['motdepasse'])) {
-    if ($_POST['pseudo'] === 'Jean' && $_POST['motdepasse'] === 'root') {
+    if ($_POST['pseudo'] === 'Jean' && password_verify($_POST['motdepasse'], $password)) {
         session_start();
         $_SESSION['connecte'] = 1;
         header('Location: http://developpeur-aura.com/Jean_Forteroche/index.php?action=dashboard');
@@ -15,7 +17,7 @@ if (!empty($_POST['pseudo']) && !empty($_POST['motdepasse'])) {
 ?>
 
 <?php 
-require_once 'functions/auth.php';
+require_once 'controller/backend.php';
 if(est_connecte()) {
     header('Location : http://developpeur-aura.com/Jean_Forteroche/index.php?action=dashboard');
     exit();

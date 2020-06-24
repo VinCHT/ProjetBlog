@@ -27,12 +27,12 @@ while ($datamessages = $allContactsBack->fetch())
       <td><?= htmlspecialchars($datamessages['content']) ?></td>
       <th><a href="index.php?action=deleteM&amp;id=<?=$datamessages['id'] ?>">Supprimer</a></th>
     </tr>
-    </tbody>
-  </table>
+  </tbody>
+</table>
 
 <?php
 }
-// $allContacts-closeCursor();
+
 ?>
 
 

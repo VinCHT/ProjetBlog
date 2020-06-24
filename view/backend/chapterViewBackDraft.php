@@ -16,7 +16,7 @@
         <form class="form" method="post" action="index.php?action=modifBrouillon&amp;id=<?=$postBackDraft['id'] ?>">
             <textarea name="title" rows="1" placeholder="title"><?=$postBackDraft['title'] ?></textarea><br><br>
             <textarea id="mytextarea" name="content"  rows="5" cols="50" placeholder="content"><?=$postBackDraft['content'] ?></textarea><br><br>
-            <button type="submit" name="suppChapitre">Enregister</button><br>
+            <button type="submit" name="suppChapitre">Brouillon</button><br>
         </form>
 
         <form class="form" method="post" action="index.php?action=draftToPublish&amp;id=<?=$postBackDraft['id'] ?>">

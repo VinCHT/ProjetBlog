@@ -15,7 +15,8 @@
         <form class="form" method="post" action="index.php?action=modifChapitre&amp;id=<?=$postBack['id'] ?>">
             <textarea name="title" rows="1" placeholder="title"><?=$postBack['title'] ?></textarea><br><br>
             <textarea id="mytextarea" name="content"  rows="5" cols="50" placeholder="content"><?=$postBack['content'] ?></textarea><br><br>
-            <button type="submit" name="suppChapitre">Enregistrer</button><br>
+            <input type="file" name="img" class="form-control-file">
+            <button type="submit" name="suppChapitre">Publié</button><br>
         </form>
 
         <form class="form" method="post" action="index.php?action=unpublished&amp;id=<?=$postBack['id'] ?>">
