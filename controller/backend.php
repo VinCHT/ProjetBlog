@@ -5,16 +5,16 @@ require_once('model/backend/ContactManagerBack.php');
 
 // permet de vérifier si l'utilisateur est connecté ou non
 //  1/2
-function est_connecte(): bool {
+function is_connect(): bool {
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
-    return !empty($_SESSION['connecte']);
+    return !empty($_SESSION['connect']);
 }
 
 //  2/2
 function forcer_utilisateur_connecte (): void {
-    if(!est_connecte()) {
+    if(!is_connect()) {
         
         header('Location: index.php?action=login');
         
@@ -75,7 +75,7 @@ function createChapter()
 }
 
 // Signaler un commentaire
-function signal($commentId) //signale un commentaire
+function signal($commentId) 
 {
 	$allMessagesManagerBack = new CommentManagerBack();
 	$signal = $allMessagesManagerBack->signalement($commentId);
@@ -89,24 +89,8 @@ function signal($commentId) //signale un commentaire
 
 }
 
-//ENVOYER UN BROUILLON EN PUBLICATION
-function draftToPublish($postBackDraft) //signale un commentaire
-{
-	$draft2publication = new ChapterManagerBack();
-	$bePublish = $draft2publication->get1($postBackDraft);
-	require('view/backend/administration.php');
-}
-
-//ENVOYER UN BROUILLON EN PUBLICATION
-function unpublished($postBack) //signale un commentaire
-{
-	$unPublication = new ChapterManagerBack();
-	$unPublish = $unPublication->get2($postBack);
-	require('view/backend/administration.php');
-}
-
 // Approuver un commentaire
-function approve($commentId) //signale un commentaire
+function approve($commentId) 
 {
 	$commentManager = new CommentManagerBack();
 	$approve = $commentManager->approbation($commentId);
@@ -170,70 +154,51 @@ function postBackDraft()
 
 }
 
-
-
 //Modifier un chapitre
-function modifChapitre($title, $content, $photo, $postId) 
+function modifChapter($title, $numChapter, $content, $publication, $postId) 
 {
 	$chapModif = new ChapterManagerBack();
-	$postBack = $chapModif->updateChapitre($title, $content, $photo, $postId);
+	$postBack = $chapModif->updateChapter($title, $numChapter, $content, $publication, $postId);
 	
 	require('view/backend/administration.php');
 }
+
 
 //Modifier un brouillon
-function modifBrouillon($title, $content,$postId) 
+function modifDraft($title, $numChapter, $content, $publication, $postId) 
 {
-	$brouillonModif = new ChapterManagerBack();
-	$postBackDraft = $brouillonModif->updateBrouillon($title, $content,$postId);
+	$draftModif = new ChapterManagerBack();
+	$postBackDraft = $draftModif->updateDraft($title, $numChapter, $content, $publication, $postId); 
 	
 	require('view/backend/administration.php');
 }
-
-
-function upDraft($publication) 
-{
-	$upDraft = new ChapterManagerBack();
-	$postUpBackDraft = $upDraft->updateTheDraft($publication);
-	
-	require('view/backend/administration.php');
-}
-
-
 
 // supprimer un chapitre
-function suppChapitre($dataId)
+function suppChapter($dataId)
 {
 	$supprime = new ChapterManagerBack();
-	$deletedPost = $supprime->deletChapitre($dataId);
+	$deletedPost = $supprime->deletChapter($dataId);
 
 	require('view/backend/administration.php');
 }
 
 // supprimer un brouillon
-function suppChapitreDraft($dataId)
+function suppChapterDraft($dataId)
 {
 	$supprime = new ChapterManagerBack();
-	$deletedPostDraft = $supprime->deletChapitreDraft($dataId);
+	$deletedPostDraft = $supprime->deletChapterDraft($dataId);
 
 	require('view/backend/administration.php');
 }
 
 
 //Ajouter un chapitre
-function editChapitre($photo,$title,$content, $numChapter, $publication,$alt)
+function editChapter($photo,$title,$content, $numChapter, $publication,$alt)
 {
 	$chapEdit = new ChapterManagerBack();
-	$chapitre = $chapEdit->postChapitre($photo,$title,$content, $numChapter, $publication,$alt);
+	$chapitre = $chapEdit->postChapter($photo,$title,$content, $numChapter, $publication,$alt);
 	require('view/backend/administration.php');
 
 }
 
-//Publier un brouillon
-function postDraftOnline($content,$postId)
-{
-	$draftEdit = new ChapterManagerBack();
-	$draftOnline = $draftEdit->draftOnline($content,$postId);
-	require('view/backend/administration.php');
 
-}

@@ -26,13 +26,13 @@ while ($datapostsBack = $postsBack->fetch())
   </thead>
   <tbody>
     <tr>
-      <th class ="effacerColResp" scope="row"><?= htmlspecialchars($datapostsBack['id']) ?></th>
+      <th class ="effacerColResp" scope="row"><?= htmlspecialchars($datapostsBack['num_chapter']) ?></th>
       <td><?= htmlspecialchars($datapostsBack['title']) ?></td>
       <td class="contenu-center"><?= nl2br(substr($datapostsBack['content'], 0, 200).'...') ?></td>
       <td class ="effacerColResp">Le <?= $datapostsBack['creation_date_fr'] ?></td>
   
       <th class ="effacerColResp"><a class="lien-navigation" href="index.php?action=postBack&amp;id=<?= $datapostsBack['id'] ?>">Modifier le chapitre</a></th>
-      <th><a href="index.php?action=suppChapitre&amp;id=<?=$datapostsBack['id'] ?>">Supprimer</a></th>
+      <th><a href="index.php?action=suppChapter&amp;id=<?=$datapostsBack['id'] ?>">Supprimer</a></th>
      
       </tr>
   </tbody>
@@ -50,7 +50,6 @@ while ($dataDrafts = $postsDrafts->fetch())
 {
 ?>
 
-
 <table class="table">
   <thead class="thead-dark">
     <tr>
@@ -63,12 +62,12 @@ while ($dataDrafts = $postsDrafts->fetch())
   </thead>
   <tbody>
     <tr>
-      <th class ="effacerColResp" scope="row"><?= htmlspecialchars($dataDrafts['id']) ?></th>
+      <th class ="effacerColResp" scope="row"><?= htmlspecialchars($dataDrafts['num_chapter']) ?></th>
       <td><?= htmlspecialchars($dataDrafts['title']) ?></td>
       <td><?= nl2br(substr($dataDrafts['content'], 0, 200).'...') ?></td>
       <td class ="effacerColResp" >Le <?= $dataDrafts['creation_date_fr'] ?></td>
       <th class ="effacerColResp"><a  class="lien-navigation" href="index.php?action=postBackDraft&amp;id=<?= $dataDrafts['id'] ?>">Modifier le brouillon</a></th>
-      <th><a href="index.php?action=suppChapitreDraft&amp;id=<?=$dataDrafts['id'] ?>">Supprimer</a></th>
+      <th><a href="index.php?action=suppChapterDraft&amp;id=<?=$dataDrafts['id'] ?>">Supprimer</a></th>
   
     </tr>
   </tbody>

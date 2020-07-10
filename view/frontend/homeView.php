@@ -4,7 +4,7 @@
     <!-- BANNIERE -->
     <img src="http://developpeur-aura.com/Jean_Forteroche/public/images/header.jpg" class="card-img-top" alt="Responsive image">
  <!--FIN BANNIERE -->
-<div id="container-content">
+
 
     <!-- représente le contenu majoritaire du <body> du document.  -->
     <main id="main">
@@ -37,7 +37,7 @@
                 <article class="chapitre" id="article1">
                 <div class="chapitre-img"><img src="http://developpeur-aura.com/Jean_Forteroche/public/images/article4.jpeg" alt="..."></div>   
                 <br>                                
-                    <div class="chapitre-numero">Chapitre : <?= htmlspecialchars($data['id']) ?></div>
+                    <div class="chapitre-numero">Chapitre n° <?= htmlspecialchars($data['num_chapter']) ?></div>
                     <br>
                     <h3 class="chapitre-title"><?= htmlspecialchars($data['title']) ?></h3>   
                     <br> 
@@ -50,7 +50,7 @@
          </div> <!--fin div container-arrticles -->
    
     </main>
-</div> <!--fin id "container-content">
+
         <?php
         }
         $lastPost->closeCursor();

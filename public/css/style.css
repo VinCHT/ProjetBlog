@@ -80,6 +80,11 @@ max-width: 20px;
 {
   color:#8C6A45;
 }
+.lien-navigation-footer
+{
+  color:#8C6A45;
+}
+
 
 hr.style1 {
 border-top: 1px solid #8c8b8b;
@@ -100,6 +105,8 @@ font-size: 18px;
 {
   width:50%;
   height:50%;
+  margin-bottom:50px;
+  text-align: center;
 }
 
 
@@ -186,7 +193,7 @@ img {
 
 /*POSITION DU CONTAINER*/
 .chapitre {
-  position: relative;
+ justify-content: center;
   margin: auto;
   width:80%;
   min-height:50px;
@@ -198,11 +205,19 @@ img {
 .chapitre-date {
   font-size: 1rem;
   font-style: italic;
+  margin: 0px 0px 20px 0;
 }
 /*NUMERO DU CHAPITRE*/
 .chapitre-numero {
   font-size: 2.5rem;
+  text-align: center;
+  margin: 0px 0px 50px 0;
+  }
+
+.backNumChapt {
+margin: 50px 0px 20px 0;
 }
+
 /*TITRE DU CHAPITRE*/
 .chapitre-title {
   font-size: 2.25rem;
@@ -210,6 +225,7 @@ img {
   margin: 10px 0px 10px 0;
   justify-content: center;
   text-align: justify;
+  font-family: Georgia, Times, 'Times New Roman', serif;
 
 }
 /*EMPLACEMENT*/
@@ -290,7 +306,7 @@ footer {
 button {
   width:100px;
   height:50px;
-  border-radius: 6px, 6px, 6px, 6px;
+  border-radius: 6px 6px 6px 6px;
   padding:8px;
   cursor:pointer;
   text-transform: uppercase;
@@ -461,8 +477,46 @@ margin-bottom: 37px;
 display: block;
 width: 100%;
 font-size: 20px;
-color: #8C6A45;
+color: #333333;
 line-height: 1.2;
+}
+
+.input3 {
+display: block;
+width: 50%;
+font-size: 20px;
+background-color: #333333;
+color:whitesmoke;
+line-height: 1.2;
+margin:25px 0px;
+}
+
+.input4 {
+
+width: 50%;
+margin:25px 0px;
+background-color: #8C6A45;
+color:whitesmoke;
+padding:10px 10px 10px 5px;
+justify-content: center;
+}
+
+.input5 {
+
+width: 50%;
+margin:25px 0px;
+background-color: #333333;
+color:whitesmoke;
+padding:10px 10px 10px 5px;
+}
+
+.input6 {
+
+width: 50%;
+margin:25px 0px;
+background-color: #8C6A45;
+color:whitesmoke;
+padding:10px 10px 10px 5px;
 }
 
 .focus-input2 {
@@ -706,6 +760,17 @@ background-color: #8c8b8b;
 height: 50px;
 }
 
+
+.EndForms 
+{
+display:flex;
+
+width:200px;
+height:200px;
+}
+
+
+
 @media only screen and (max-width: 768px) {
   .demo .main-title {
      font-size: 3em;
@@ -719,7 +784,18 @@ height: 50px;
 
 @media screen and (min-width: 320px)  and (max-width: 800px) {
 
-
+.input3 {
+width: 100%;
+}
+.input4 {
+width: 100%;
+}
+.input5 {
+width: 100%;
+}
+.input6 {
+width: 100%;
+}
 
 /*Message de bienvenue */
 #container-bienvenue {
@@ -747,14 +823,20 @@ height: 50px;
 /*POSITION DU CONTAINER*/
 .chapitre {
   width:80%;
+  
 
 }
 .chapitre-img {
-width:50%;
+width:80%;
+
+
 }
 
+/* .bottomImg {
+margin-bottom:400px;
+} */
 .container-articles {
-  width:60%;
+  width:90%;
   margin:10px;
   display:flex;
   
@@ -766,8 +848,10 @@ display:none;
 }
 
 
-
-
+.lien-navigation-footer
+{
+display:none;
+}
 
 
 

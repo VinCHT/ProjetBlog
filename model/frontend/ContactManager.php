@@ -15,7 +15,6 @@ class ContactManager extends Manager
     {
         $db = $this->dbConnect();
         $req = $db->query('SELECT id, author, content, content_subject, content_date,  DATE_FORMAT(content_date, \'%d/%m/%Y à %Hh%i\') AS content_date FROM messages WHERE supprim=0 ORDER BY content_date DESC');
-      
         return $req;
     }
 
@@ -32,9 +31,7 @@ class ContactManager extends Manager
     {
         $db = $this->dbConnect();
         $comments = $db->prepare('SELECT * FROM comments');
-     
         return $comments ;
     }
-
 
 }

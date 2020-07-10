@@ -8,26 +8,38 @@
       });
     </script>
 <h2 class="titre-page">Modifier le brouillon</h2>
+<div class="bg-contact2">
+    <div class="container-contact2">
+        <div class="wrap-contact2">
+          <article class="chapitre">
+          <div class="chapitre-img"><?php
+                        echo'<td><img src="public/images/' .$postBackDraft["images"].'" width:60px height:60px /></td>';
+                        ?>
+            </div>
+           
+                <form class="contact2-form validate-form" class="wrap-input2 validate-input" class="form" method="post" action="index.php?action=modifDraft&amp;id=<?=$postBackDraft['id'] ?>">
+                   
+                    <textarea class="wrap-input2 validate-input" name="title" rows="1" placeholder="title"><?=$postBackDraft['title'] ?></textarea>
+                    <textarea class="wrap-input2 validate-input" name="num_chapter"  placeholder="numero chapitre"><?=$postBackDraft['num_chapter'] ?></textarea>
+                    <textarea class="wrap-input2 validate-input" id="mytextarea" name="content"  rows="5" cols="50" placeholder="content"><?=$postBackDraft['content'] ?></textarea>
+                   
+                      <select class="wrap-input2 validate-input" name="publication">
+                        <option value="1">Publier</option>
+                        <option value="2">Brouillon</option>
+                      </select>
+                        <button class="wrap-input2 validate-input" type="submit" name="btnUpdateChapter">Valider</button>    
+                        <p><a class="input6" href="index.php?action=listPostsViewBack">Retour à la liste des chapitres</a></p>
+                </form>
 
-<div class="container-articles"> 
-  <article class="chapitre" id="article1">
-    <div id="chapitre-img"><img src="http://developpeur-aura.com/Jean_Forteroche/public/images/article4.jpeg" alt="..."></div>    
-    <div id="chapitre-numero">Chapitre : <?= htmlspecialchars($postBackDraft['id']) ?></div>
-        <form class="form" method="post" action="index.php?action=modifBrouillon&amp;id=<?=$postBackDraft['id'] ?>">
-            <textarea name="title" rows="1" placeholder="title"><?=$postBackDraft['title'] ?></textarea><br><br>
-            <textarea id="mytextarea" name="content"  rows="5" cols="50" placeholder="content"><?=$postBackDraft['content'] ?></textarea><br><br>
-            <button type="submit" name="suppChapitre">Brouillon</button><br>
-        </form>
-
-        <form class="form" method="post" action="index.php?action=draftToPublish&amp;id=<?=$postBackDraft['id'] ?>">
-          <button type="submit" >Publier</button>
-        </form>
-
-      <p><a href="index.php?action=listPostsViewBack">Retour à la liste des brouillon</a></p>
-  </article>
-</div> <!--fin div container-articles -->
+            
+           
+            </div>
+          </article>
 
 
+        </div>
+      </div>
+</div>
 
 
 

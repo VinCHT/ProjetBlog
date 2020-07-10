@@ -34,8 +34,6 @@ try {
         elseif ($_GET['action']=='logout') {
             logout();
         }
-       
-      
         ////Poster un chapitre en frontend
         elseif ($_GET['action'] == 'post') 
         {
@@ -47,7 +45,6 @@ try {
                 throw new Exception('Aucun identifiant de chapitre envoyé');
             }
         }
-
         //Poster un chapitre en backend
         elseif ($_GET['action'] == 'postBack') 
         {
@@ -59,9 +56,6 @@ try {
                 throw new Exception('Aucun identifiant de chapitre envoyé');
             }
         }
-
-      
-
         //Poster un brouillon en back
         elseif ($_GET['action'] == 'postBackDraft') 
         {
@@ -73,9 +67,6 @@ try {
                 throw new Exception('Aucun identifiant de chapitre envoyé');
             }
         }
-
-    
-      
         // Ajouter un commentaire
         elseif ($_GET['action'] == 'addComment') 
         {
@@ -117,7 +108,6 @@ try {
             deleteM($_GET['id']);
         }
 
-        
         //Ajouter un message
         elseif ($_GET['action'] == 'addMessage') 
         {
@@ -145,96 +135,59 @@ try {
         }
         
         //Modifier un chapitre
-        elseif ($_GET['action'] == 'modifChapitre') 
+        elseif ($_GET['action'] == 'modifChapter') 
         {
-          modifChapitre($_POST['title'], $_POST['content'],$_FILES['img']['name'], $_GET['id']);
+            modifChapter($_POST['title'], $_POST['num_chapter'], $_POST['content'], $_POST['publication'], $_GET['id']);
         }
         
-       
-
-        //Modifier un brouillon
-        elseif ($_GET['action'] == 'modifBrouillon') 
-        {
-            modifBrouillon($_POST['title'], $_POST['content'], $_GET['id']);
-           
-        }
-       
-    //Modifier un brouillon
-        elseif ($_GET['action'] == 'publishDraft') 
-        {
-            upDraft($_POST['publication']);
-        }
+       //Modifier un brouillon
+       elseif ($_GET['action'] == 'modifDraft') 
+       {
+            modifDraft($_POST['title'], $_POST['num_chapter'], $_POST['content'], $_POST['publication'], $_GET['id']);
+       }
     
          //Supprimer un chapitre
-        elseif($_GET['action'] == 'suppChapitre')
+        elseif($_GET['action'] == 'suppChapter')
         {
-            suppChapitre($_GET['id']);
+            suppChapter($_GET['id']);
         }
 
         //Supprimer un brouillon
-        elseif($_GET['action'] == 'suppChapitreDraft')
+        elseif($_GET['action'] == 'suppChapterDraft')
         {
-            suppChapitreDraft($_GET['id']);
+            suppChapterDraft($_GET['id']);
         }
 
+        //Editer un chapitre 
+          elseif($_GET['action'] == 'editChapter')
+          {
+            //variables
+            $title= $_POST['title'];
+            $content= $_POST['content'];
+            $numChapter= $_POST['num_chapter'];
+            $publication=$_POST['publication'];
+            $photo= $_FILES['img']['name'];
+            $upload="public/images/".$photo;
+            move_uploaded_file($_FILES['img']['tmp_name'], $upload);
+            $alt= $_POST['alt'];
+  
+            editChapter($_FILES['img']['name'],$_POST['title'],$_POST['content'],$_POST['num_chapter'], $_POST['publication'],$_POST['alt']); 
+          }
 
-
-        //Editer un chapitre pour la première fois                   NE PAS OUBLIER DE POSTER IMAGE ET ALT
-        elseif($_GET['action'] == 'editChapitre')
-        {
-            editChapitre($_FILES['img']['name'],$_POST['title'],$_POST['content'],$_POST['num_chapter'], $_POST['publication'],$_POST['alt']); 
-        }
-
-         //ENVOYER IMAGE
-         elseif($_GET['action'] == 'sendImage')
-         {
-                 
-                    // ENVOI FICHIER PHP
-            if (isset($_FILES['image']) && $_FILES['image'] ['error'] == 0) 
-            {
-                //variable pour l'erreur
-                $error=1;
-                // TAILLE
-                if ($_FILES['image']['size'] <= 3000000)
-                {
-                    // EXTENSION
-                    $informationsImage = pathinfo($_FILES['image']['name']);
-                    $extensionImage = $informationsImage['extension'];
-                    $extensionsArray = array('png', 'jpeg', 'jpg');
-
-                    if (in_array($extensionImage, $extensionsArray))
-                    {
-                        $address = 'public/images/'.time().rand().rand().'.'.$extensionImage;
-                        move_uploaded_file($_FILES['image']['tmp_name'], $address);
-                        
-                        $error=0;
-                    }
-                }
-               
-            }
-
-            require('view/backend/createChapter.php');
-         }
- 
-
-          
+                  
         // Publier un brouillon
         elseif ($_GET['action'] == 'draftToPublish')
         {
             draftToPublish($_GET['id']);
         }
 
-         // Dépublier un chapitre
-         elseif ($_GET['action'] == 'unpublished')
-         {
-            unpublished($_GET['id']);
-         }
+        
 
     }
     else {
         homeView();
     }
 }
-catch(Exception $e) {
+catch (Exception $e) {
     echo 'Erreur : ' . $e->getMessage();
 }

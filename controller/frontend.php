@@ -50,10 +50,6 @@ function addComment($postId, $author, $comment)
     }
 }
 
-
-
-
-
 function addMessage($author, $subject, $content)
 {
     $contentManager = new ContactManager();

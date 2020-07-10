@@ -6,8 +6,11 @@
 
 <div class="container-articles"> 
     <article class="chapitre">
-        <div class="chapitre-img"><img src="http://developpeur-aura.com/Jean_Forteroche/public/images/article4.jpeg" alt="..."></div>                                  
-            <div id="chapitre-numero">Chapitre : <?= htmlspecialchars($post['id']) ?></div>
+    <div class="chapitre-img"><?php
+                echo'<td><img src="public/images/' .$post["images"].'" width:60px height:60px /></td>';
+                ?>
+            </div>                               
+            <h3 class="chapitre-numero">Chapitre n° <?= htmlspecialchars($post['num_chapter']) ?></h3>
             <br>
             <h3 class="chapitre-title"><?= htmlspecialchars($post['title']) ?></h3>    
             <div class="chapitre-date"><?= $post['creation_date_fr'] ?></div>             
