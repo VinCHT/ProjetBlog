@@ -23,11 +23,9 @@
                     <label for="content">Commentaire</label><br />
                     <textarea class="input2" id="content" name="content"></textarea>
                 </div>
-
-                <div class="container-contact2-form-btn">
-                    <div class="wrap-contact2-form-btn">
-                        <div class="contact2-form-bgbtn"></div>
-                    </div>
+                <div class="form-check">
+                    <input class="input6" type="checkbox" class="form-check-input" id="Check1" name="Check1" data-validate = "La case doit être cochée">
+                    <label class="form-check-label" for="Check1">J'autorise le site à conserver mes données personnelles. Celles-ci seront uniquement destinées à recueillir les données provenant du formulaire de contact. Aucune exploitation commerciale ne sera faite des données conservées.</label>
                 </div>
                 <button type="submit">Valider</button> 
             </form>
@@ -35,16 +33,6 @@
     </div>
 </div>
   <!--FIN FORMULAIRE DE CONTACT -->
-
-
-
-
-
-
-
-
-
-
 
 
 <?php $content = ob_get_clean(); ?>

@@ -21,25 +21,18 @@
             <br><br>
        
             <form class="contact2-form validate-form" class="wrap-input2 validate-input" class="form" method="post" action="index.php?action=modifChapter&amp;id=<?=$postBack['id'] ?>">
-                    
-                    <textarea class="wrap-input2 validate-input"  name="title" rows="1" placeholder="title"><?=$postBack['title'] ?></textarea>
-                    <textarea class="wrap-input2 validate-input" name="num_chapter"  placeholder="numero chapitre"><?=$postBack['num_chapter'] ?></textarea>
-                    <textarea class="wrap-input2 validate-input"  id="mytextarea" name="content"  rows="5" cols="50" placeholder="content"><?=$postBack['content'] ?></textarea>
-                  
-                      <select class="wrap-input2 validate-input"  name="publication">
-                        <option value="1">Publier</option>
-                        <option value="2">Brouillon</option>
-                      </select>
-                        <button class="wrap-input2 validate-input"  type="submit" name="btnUpdateChapter">Valider</button>    
-                        <p><a class="input6" href="index.php?action=listPostsViewBack">Retour à la liste des chapitres</a></p>
-                </form>
-
-            
-           
+                <textarea class="wrap-input2 validate-input"  name="title" rows="1" placeholder="title"><?=$postBack['title'] ?></textarea>
+                <textarea class="wrap-input2 validate-input" name="num_chapter"  placeholder="numero chapitre"><?=$postBack['num_chapter'] ?></textarea>
+                <textarea class="wrap-input2 validate-input"  id="mytextarea" name="content"  rows="5" cols="50" placeholder="content"><?=$postBack['content'] ?></textarea>
+                  <select class="wrap-input2 validate-input"  name="publication">
+                    <option value="1">Publier</option>
+                    <option value="2">Brouillon</option>
+                  </select>
+                    <button class="wrap-input2 validate-input"  type="submit" name="btnUpdateChapter">Valider</button>    
+                    <p><a class="input6" href="index.php?action=listPostsViewBack">Retour à la liste des chapitres</a></p>
+              </form>
             </div>
           </article>
-
-
         </div>
       </div>
 </div>

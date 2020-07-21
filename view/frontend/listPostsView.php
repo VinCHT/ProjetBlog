@@ -10,8 +10,8 @@ while ($data = $posts->fetch())
             <div class="container-articles"> 
             <article class="chapitre" id="article1">
             <h3 class="chapitre-numero">Chapitre n° <?= htmlspecialchars($data['num_chapter']) ?></h3>
-            <div class="chapitre-img"><?php
-                echo'<td><img src="public/images/' .$data["images"].'" width:60px height:60px /></td>';
+            <div class="chapitre-img"><?= htmlspecialchars($data['alt']) ?> <?php
+                echo'<img src="public/images/' .$data["images"].'"/>';
                 ?>
             </div>
             <br>                                   
@@ -29,7 +29,7 @@ while ($data = $posts->fetch())
                 <br>
             
             </article>
-         </div> <!--fin div container-arrticles -->
+         </div> <!--fin div container-articles -->
 
 <?php
 }

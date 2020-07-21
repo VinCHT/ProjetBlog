@@ -52,6 +52,9 @@ function AllCommentsBack()
     $allCommentsManagerBack = new CommentManagerBack();
     $allCommentsBack = $allCommentsManagerBack->getCommentsBack();
 
+	$allCommentsManagerBackToApprove = new CommentManagerBack();
+	$allCommentsBackToApprove = $allCommentsManagerBackToApprove->getCommentsBackToApprove();
+
     $allCommentsManagerBackSignal = new CommentManagerBack();
     $allCommentsBackSignal = $allCommentsManagerBackSignal->getCommentsBackSignal();
     require('view/backend/backComments.php');
@@ -81,28 +84,42 @@ function signal($commentId)
 	$signal = $allMessagesManagerBack->signalement($commentId);
 
 	if($signal === false) {
-		die('<p style= "border: 1px solid red; text-align: center; font-size: 55px; margin: 90px 90px 90px;">Oups... Impossible de signaler !</p>');
+		die('<p style= "border: 1px solid red; text-align: center; font-size: 55px; margin: 90px 90px 90px;">Impossible de signaler !</p>');
 	}else{ 
 		header('Location: index.php?action=listPostsView');
-
+	
     }
 
 }
 
-// Approuver un commentaire
+// Approuver un commentaire qui a été signalé
 function approve($commentId) 
 {
 	$commentManager = new CommentManagerBack();
 	$approve = $commentManager->approbation($commentId);
 
 	if($approve === false) {
-		die('<p style= "border: 1px solid red; text-align: center; font-size: 55px; margin: 90px 90px 90px;">Oups... Impossible d\'approuver ce commentaire !</p>');
+		die('<p style= "border: 1px solid red; text-align: center; font-size: 55px; margin: 90px 90px 90px;">Impossible d\'approuver ce commentaire !</p>');
 	}else{ 
-		header('Location: index.php?action=dashboard');
-
+		header('Location: index.php?action=getComments&id=' . $commentId);
     }
 
 }
+
+// Approuver un commentaire
+function approveAndValid($commentId) 
+{
+	$commentManager = new CommentManagerBack();
+	$approveAndValid = $commentManager->approbationAndValid($commentId);
+
+	if($approveAndValid === false) {
+		die('<p style= "border: 1px solid red; text-align: center; font-size: 55px; margin: 90px 90px 90px;">Impossible d\'approuver ce commentaire !</p>');
+	}else{ 
+		header('Location: index.php?action=getComments&id=' . $commentId);
+    }
+
+}
+
 
 // Supprimer un commentaire
 function delete($commentId) 
@@ -111,10 +128,10 @@ function delete($commentId)
 	$delete = $commentManager->suppression($commentId);
 
 	if($delete === false) {
-		die('<p style= "border: 1px solid red; text-align: center; font-size: 55px; margin: 90px 90px 90px;">Oups... Impossible de supprimer ce commentaire !</p>');
+		die('<p style= "border: 1px solid red; text-align: center; font-size: 55px; margin: 90px 90px 90px;">Impossible de supprimer ce commentaire !</p>');
 	}else{ 
-		header('Location: index.php?action=dashboard');
-
+		
+		header('Location: index.php?action=getComments&id=' . $commentId);
     }
 
 }
@@ -126,13 +143,14 @@ function deleteM($messageId)
 	$deleteM = $allContactsBack->suppressionM($messageId);
 
 	if($deleteM === false) {
-		die('<p style= "border: 1px solid red; text-align: center; font-size: 55px; margin: 90px 90px 90px;">Oups... Impossible de supprimer ce message !</p>');
+		die('<p style= "border: 1px solid red; text-align: center; font-size: 55px; margin: 90px 90px 90px;">Impossible de supprimer ce message !</p>');
 	}else{ 
-		header('Location: index.php?action=dashboard');
-
+		header('Location: index.php?action=getMessages&id=' . $messageId);
     }
 
 }
+
+
 
 //Afficher un chapitre dans le backend pour pouvoir le modifier par la suite
 function postBack()
@@ -173,13 +191,21 @@ function modifDraft($title, $numChapter, $content, $publication, $postId)
 	require('view/backend/administration.php');
 }
 
+
 // supprimer un chapitre
 function suppChapter($dataId)
 {
 	$supprime = new ChapterManagerBack();
 	$deletedPost = $supprime->deletChapter($dataId);
 
-	require('view/backend/administration.php');
+	if ($deletedPost === false) 
+	{
+		die('<p style= "border: 1px solid red; text-align: center; font-size: 55px; margin: 90px 90px 90px;">Impossible de supprimer ce chapitre !</p>');
+	} 
+	else{  
+		header('Location: index.php?action=listPostsViewBack&id=' . $dataId);
+    }
+	
 }
 
 // supprimer un brouillon
@@ -188,7 +214,14 @@ function suppChapterDraft($dataId)
 	$supprime = new ChapterManagerBack();
 	$deletedPostDraft = $supprime->deletChapterDraft($dataId);
 
-	require('view/backend/administration.php');
+	if ($deletedPostDraft === false) 
+	{
+		die('<p style= "border: 1px solid red; text-align: center; font-size: 55px; margin: 90px 90px 90px;">Impossible de supprimer ce chapitre !</p>');
+	} 
+	else{  
+		header('Location: index.php?action=listPostsViewBack&id=' . $dataId);
+    }
+
 }
 
 

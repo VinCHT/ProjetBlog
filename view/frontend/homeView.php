@@ -35,8 +35,11 @@
             <h2 class="titre-page">Le dernier chapitre</h2>
             <div class="container-articles"> 
                 <article class="chapitre" id="article1">
-                <div class="chapitre-img"><img src="http://developpeur-aura.com/Jean_Forteroche/public/images/article4.jpeg" alt="..."></div>   
-                <br>                                
+                <div class="chapitre-img"><?= htmlspecialchars($data['alt']) ?> <?php
+                echo'<img src="public/images/' .$data["images"].'" alt=""  />';
+                ?>
+            </div> 
+                <br>                             
                     <div class="chapitre-numero">Chapitre n° <?= htmlspecialchars($data['num_chapter']) ?></div>
                     <br>
                     <h3 class="chapitre-title"><?= htmlspecialchars($data['title']) ?></h3>   
@@ -47,7 +50,7 @@
                     <br>
                     <em><a class="lien-navigation" href="index.php?action=post&amp;id=<?= $data['id'] ?>">Lire la suite</a></em>
                 </article>
-         </div> <!--fin div container-arrticles -->
+         </div> <!--fin div container-articles -->
    
     </main>
 

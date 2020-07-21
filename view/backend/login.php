@@ -2,7 +2,7 @@
 <?php ob_start(); ?>
 <?php 
 $erreur = null;
-$password = '$2y$12$o0ZU/VaDaUhcRStMkohwd.i.Fnawfepte9dv9cgIbmoBF.lh9HQv6';
+$password = '$2y$12$o0ZU/VaDaUhcRStMkohwd.i.Fnawfepte9dv9cgIbmoBF.lh9HQv6'; 
 
 if (!empty($_POST['pseudo']) && !empty($_POST['motdepasse'])) {
     if ($_POST['pseudo'] === 'Jean' && password_verify($_POST['motdepasse'], $password)) {

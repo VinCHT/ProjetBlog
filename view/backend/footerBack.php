@@ -1,6 +1,6 @@
 <footer>
-  <div class="footer-copyright text-center py-3">Copyright © 2020 - Jean Forteroche :
-    <a class="lien-navigation" href="http://developpeur-aura.com/Jean_Forteroche/"> developpeur-aura.com/Jean_Forteroche</a>
+  <div class="footer-copyright text-center py-3">Copyright © 2020 - Jean Forteroche -
+    <a class="lien-navigation-footer" href="http://developpeur-aura.com/Jean_Forteroche/"> developpeur-aura.com/Jean_Forteroche</a>
   </div>
 </footer>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

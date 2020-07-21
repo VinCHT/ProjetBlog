@@ -92,11 +92,22 @@ try {
         {
             signal($_GET['id']);
         }
-        // Approuver un commentaire
+        // Approuver un commentaire qui a été signalé
         elseif ($_GET['action'] == 'approve') 
         {
             approve($_GET['id']);
         }
+
+        // Approuver un commentaire
+        elseif ($_GET['action'] == 'approveAndValid') 
+        {
+            approveAndValid($_GET['id']);
+        }
+
+
+    
+
+
         // Supprimer un commentaire
         elseif ($_GET['action'] == 'delete') 
         {
@@ -111,9 +122,9 @@ try {
         //Ajouter un message
         elseif ($_GET['action'] == 'addMessage') 
         {
-            if (!empty($_POST['author']) && !empty($_POST['content_subject']) && !empty($_POST['content'])) 
+            if (!empty($_POST['author']) && !empty($_POST['content_subject']) && !empty($_POST['content']) && !empty($_POST['Check1']) ) 
             {
-                addMessage($_POST['author'],$_POST['content_subject'], $_POST['content']);
+                addMessage($_POST['author'], $_POST['content_subject'], $_POST['content'], $_POST['Check1']);
             }
             else 
             {
@@ -161,7 +172,7 @@ try {
         //Editer un chapitre 
           elseif($_GET['action'] == 'editChapter')
           {
-            //variables
+                        //variables
             $title= $_POST['title'];
             $content= $_POST['content'];
             $numChapter= $_POST['num_chapter'];
@@ -170,18 +181,22 @@ try {
             $upload="public/images/".$photo;
             move_uploaded_file($_FILES['img']['tmp_name'], $upload);
             $alt= $_POST['alt'];
-  
-            editChapter($_FILES['img']['name'],$_POST['title'],$_POST['content'],$_POST['num_chapter'], $_POST['publication'],$_POST['alt']); 
+                if (!empty($_FILES['img']['name']) && !empty($_POST['title']) && !empty($_POST['content']) && !empty($_POST['num_chapter']) && !empty($_POST['publication']) && !empty($_POST['alt']))
+                {
+                    editChapter($_FILES['img']['name'],$_POST['title'],$_POST['content'],$_POST['num_chapter'], $_POST['publication'],$_POST['alt']); 
+                }
+                else 
+                    {
+                        throw new Exception('Tous les champs ne sont pas remplis !');
+                    }
+            
           }
-
-                  
+   
         // Publier un brouillon
         elseif ($_GET['action'] == 'draftToPublish')
         {
             draftToPublish($_GET['id']);
         }
-
-        
 
     }
     else {

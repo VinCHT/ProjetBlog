@@ -7,19 +7,18 @@
 <div class="container-articles"> 
     <article class="chapitre">
     <div class="chapitre-img"><?php
-                echo'<td><img src="public/images/' .$post["images"].'" width:60px height:60px /></td>';
+                echo'<img src="public/images/' .$post["images"].'"/>';
                 ?>
-            </div>                               
+            </div>   
             <h3 class="chapitre-numero">Chapitre n° <?= htmlspecialchars($post['num_chapter']) ?></h3>
             <br>
             <h3 class="chapitre-title"><?= htmlspecialchars($post['title']) ?></h3>    
             <div class="chapitre-date"><?= $post['creation_date_fr'] ?></div>             
-            <div class="chapitre-text"><?= nl2br(htmlspecialchars($post['content'])) ?></div>
+            <div class="chapitre-text"><?= nl2br(($post['content'])) ?></div>
             <br>
             <p><a href="index.php?action=listPostsView">Retour à la liste des chapitres</a></p>
     </article>
 </div>
-
 
 <div class="bg-contact2">
             <div class="container-contact2">
@@ -67,7 +66,6 @@ while ($comment = $comments->fetch())
 <?php
 }
 ?>
-
 
 
 <?php $content = ob_get_clean(); ?>
